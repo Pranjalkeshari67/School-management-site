@@ -11,7 +11,7 @@
                 <a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
             </li>
             <li class="active-bre">
-                <a href="#"> Add New Post</a>
+                <a href="#"> Add New Event</a>
             </li>
             <li class="page-back">
                 <a href="index.html"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
@@ -21,15 +21,15 @@
     <div class="sb2-2-add-blog sb2-2-1">
         <div class="box-inn-sp">
             <div class="inn-title">
-                <h4>Add New Post</h4>
-                <p>Science & Technology The Right Way To Start A Short Break Holiday</p>
+                <h4>Add New Event</h4>
+               
             </div>
             <div class="bor">
-                <form action="javascript:void(0)" method="post" enctype="multipart/form-data" onsubmit="return OnsubmitEvent(event, this)">
+                <form action="javascript:void(0)" method="post" enctype="multipart/form-data" onsubmit="return OnSubmitEventForm(event, this)">
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="list-title" type="text" class="validate" name="Heading">
-                            <label for="list-title">Post Name</label>
+                            <input id="ename" type="text" class="validate" name="eventName">
+                            <label for="ename">Event Name</label>
                         </div>
                     </div>
 
@@ -37,11 +37,11 @@
                         <div class="input-field col s12">
                             <div class="file-field">
                                 <div class="btn">
-                                    <span>File</span>
+                                    <span>Event Photo</span>
                                     <input type="file" name="postedFile">
                                 </div>
                                 <div class="file-path-wrapper">
-                                    <input class="file-path validate" type="text" placeholder="Upload Blog Banner" id="image" name="postedFile">
+                                    <input class="file-path validate" type="text" placeholder="Upload Event Banner" id="ephoto" name="postedFile">
                                 </div>
                             </div>
                         </div>
@@ -50,8 +50,8 @@
                     <div class="row">
                         <div class="input-field col s12">
                             .
-                            <input id="list-title" type="date" class="validate" name="Heading">
-                            <label for="list-title">EventDate</label>
+                            <input id="edate" type="date" class="validate" name="eventDate">
+                            <label for="eventDate">EventDate</label>
                         </div>
                     </div>
 

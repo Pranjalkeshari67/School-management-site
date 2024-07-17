@@ -174,7 +174,7 @@ namespace IntSchl_DAL.Repository
         public bool addEvent(Event ev)
         {
             connection();
-            SqlCommand cmd = new SqlCommand("eventOperations");
+            SqlCommand cmd = new SqlCommand("eventOperations",con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@proc_id", "addEvent");
             cmd.Parameters.AddWithValue("@eventName", ev.eventName);
@@ -183,7 +183,7 @@ namespace IntSchl_DAL.Repository
             con.Open();
             int i = cmd.ExecuteNonQuery();
             con.Close();
-            if(i>1)
+            if(i>0)
             {
                 return true;
             }
@@ -192,6 +192,12 @@ namespace IntSchl_DAL.Repository
                 return false;
             }
 
+        }
+
+        public List<Event> allEvent(Event ev)
+        {
+            List<Event> lst = new List<Event>();
+            return lst;
         }
     }
 }

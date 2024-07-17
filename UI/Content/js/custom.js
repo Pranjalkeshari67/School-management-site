@@ -102,7 +102,7 @@ function OnSubmitTeacherForm(e, t)
 {
     console.log("called");
     console.log("called");
-    //$(".error").remove();
+    $(".error").remove();
     if (!TeacherFormValidations()) {
         console.log("Not Submitted");
         return false;
@@ -155,6 +155,88 @@ function TeacherFormValidations() {
         return true;
     }
 }
+
+//event validation
+function OnSubmitEventForm(e, t) {
+    console.log("called");
+    console.log("called");
+    $(".error").remove();
+    if (!eventFormValidations())
+    {
+        console.log("Not Submitted");
+        return false;
+    }
+    else
+    {
+        console.log("Form Submited");
+        $(t).attr("action", "/Admin/addEvents");
+        /* alert("Form Submitted");*/
+    }
+}
+
+function eventFormValidations() {
+    //debugger;
+    debugger;
+    var Name = $("#ename").val();
+    var image = $("#ephoto").val();
+    var date = $("#edate").val();
+    var check = 0;
+    debugger;
+    console.log(Name);
+
+    if (Name == '') {
+        $('#ename').after('<span class="error">This field is required</span>');
+        check = 1;
+        //debugger;
+    }
+
+    if (image == '') {
+        $('#ephoto').after('<span class="error">This field is required</span>');
+        check = 1;
+        //debugger;
+    }
+
+    if (date == '' || date == null) {
+        $('#edate').after('<span class="error">This field is required</span>');
+        check = 1;
+        //debugger;
+    }
+
+
+    //if 1 not submit the form, if 0 form will submit
+    if (check == 1) {
+        //debugger;
+        console.log("I am Checked, False 1");
+        return false;
+    }
+    else {
+        //debugger;
+        console.log("I am Checked, True 0");
+        return true;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Teacher Validation
 
 
@@ -178,3 +260,4 @@ function TeacherFormValidations() {
 //        alert(err.Description);
 //    }
 //}
+

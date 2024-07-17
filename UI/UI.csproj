@@ -242,6 +242,7 @@
     <Content Include="Views\Admin\addTeacher.cshtml" />
     <Content Include="Views\Admin\allTeacher.cshtml" />
     <Content Include="Views\Admin\addEvents.cshtml" />
+    <Content Include="Views\Admin\allEvents.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

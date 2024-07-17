@@ -49,11 +49,11 @@ namespace IntSchl_BLL
             return repo.addEvent(ev);
         }
 
-        //public List<Teacher> allTeacher(Event ev)
-        //{
-        //    AdminRepository repo = new AdminRepository();
-        //    return repo.addEvent(ev);
-        //}
+        public List<Event> allEvent(Event ev)
+        {
+            AdminRepository repo = new AdminRepository();
+            return repo.allEvent(ev);
+        }
 
         public DataSet Login(User_ user)
         {

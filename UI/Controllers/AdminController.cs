@@ -136,10 +136,18 @@ namespace UI.Controllers
             bool key = admin.addEvent(ev);
             return View();
         }
-
+        [HttpGet]
         public ActionResult allEvents()
         {
             return View();
+        }
+        [HttpPost]
+        public ActionResult allEvents(Event ev)
+        {
+            List<Event> lst = new List<Event>();
+            Admin admin = new Admin();
+            lst=admin.allEvent(ev);
+            return View(lst);
         }
 
         public ActionResult DeleteEvents()
