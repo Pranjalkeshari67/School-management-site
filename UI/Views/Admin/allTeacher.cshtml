@@ -1,0 +1,57 @@
+﻿@model List<IntSchl_BOL.Models.Teacher>
+@{
+    ViewBag.Title = "allTeacher";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+
+<div class="sb2-2">
+    <div class="sb2-2-2">
+        <ul>
+            <li>
+                <a href="#"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            </li>
+            <li class="active-bre">
+                <a href="#"> All Teachers</a>
+            </li>
+        </ul>
+    </div>
+    <div class="sb2-2-1">
+        <h2>All Teachers</h2>
+       
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Teacher Name</th>
+                    <th>Photo</th>
+                    <th>Subject</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @{
+                    int count = 0;
+                    foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td>@count</td>
+                            <td>@item.Name</td>
+                            <td><img id="adminTeacherImg" src="@item.Photo" /></td>
+                            <td>@item.Subject_name</td>
+                            <td>
+                                <a href="@Url.Action("updateTeacher","Admin", new { tid = item.tid })" class="sb2-2-1-edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                            </td>
+                            <td>
+                                <a href="@Url.Action("deleteTeacher","Admin", new { tid = item.tid})" class="sb2-2-1-edit"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                            </td>
+                        </tr>
+                    }}
+
+            </tbody>
+        </table>
+    </div>
+</div>
+

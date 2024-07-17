@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "addBlog";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+<div class="sb2-2">
+    <div class="sb2-2-2">
+        <ul>
+            <li>
+                <a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            </li>
+            <li class="active-bre">
+                <a href="#"> Add New Post</a>
+            </li>
+            <li class="page-back">
+                <a href="index.html"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+            </li>
+        </ul>
+    </div>
+    <div class="sb2-2-add-blog sb2-2-1">
+        <div class="box-inn-sp">
+            <div class="inn-title">
+                <h4>Add New Post</h4>
+                <p>Science & Technology The Right Way To Start A Short Break Holiday</p>
+            </div>
+            <div class="bor">
+                <form action="javascript:void(0)" method="post" enctype="multipart/form-data" onsubmit="return OnsubmitEvent(event, this)">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="list-title" type="text" class="validate" name="Heading">
+                            <label for="list-title">Post Name</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <div class="file-field">
+                                <div class="btn">
+                                    <span>File</span>
+                                    <input type="file" name="postedFile">
+                                </div>
+                                <div class="file-path-wrapper">
+                                    <input class="file-path validate" type="text" placeholder="Upload Blog Banner" id="image" name="postedFile">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea id="shortDesc" class="materialize-textarea" name="shortDesc"></textarea>
+                            <label for="textarea1">Short Descriptions:</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea id="Description" class="materialize-textarea" name="Description"></textarea>
+                            <label for="textarea1">Blog Descriptions:</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <select name="blogCategory" id="Category">
+                                <option value="" disabled="" selected="">Choose Category</option>
+                                <option value="1">Educations</option>
+                                <option value="2">Health</option>
+                                <option value="3">Sports</option>
+                                <option value="4">Science</option>
+                                <option value="5">Others</option>
+                            </select>
+                            <label>Select Category</label>
+                        </div>
+                       
+                    </div>
+                    @*<div class="row">
+                        <div class="input-field col s12">
+                            <input id="post-auth" type="text" class="validate">
+                            <label for="post-auth">Author Name</label>
+                        </div>
+                    </div>*@
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="submit" class="waves-effect waves-light btn-large" value="Submit">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

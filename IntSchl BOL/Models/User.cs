@@ -1,0 +1,55 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace IntSchl_BOL.Models
+{
+   
+       public class User_
+
+        {
+        public int id { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
+
+
+
+        public string loginUserName { get; set; }
+        public string LoginUserPassword { get; set; }
+        }
+
+    public class blog
+    {
+        public int id { get; set; }
+        public string image { get; set; }
+        public string heading { get; set; }
+        public int blogcategory { get; set; }
+        public string categoryname { get; set; }
+        public string shortdesc { get; set; }
+        public string description { get; set; }
+        public string postdate { get; set; }
+    }
+
+
+    public class Teacher
+    {
+        public int tid { get; set; }
+        public string Name { get; set; }
+        public string Photo { get; set; }
+        public int subid { get; set; }
+        public string Subject_name { get; set; }
+    }
+
+    public class Event
+    {
+        public int eid { get; set; }
+        public string eventName { get; set; }
+        public string eventPhoto { get; set; }
+        public string eventDate { get; set; }
+    }
+
+
+
+}

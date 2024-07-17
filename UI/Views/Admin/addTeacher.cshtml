@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "addTeacher";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+
+
+<div class="sb2-2">
+    <div class="sb2-2-2">
+        <ul>
+            <li>
+                <a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            </li>
+            <li class="active-bre">
+                <a href="#"> Add New Teacher</a>
+            </li>
+            <li class="page-back">
+                <a href="index.html"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+            </li>
+        </ul>
+    </div>
+    <div class="sb2-2-add-blog sb2-2-1">
+        <div class="box-inn-sp">
+            <div class="inn-title">
+                <h4>Add New Teacher</h4>
+            </div>
+            <div class="bor">
+                <!-------------Form Strat------------>
+                <form action="javascript:void(0)" method="post" enctype="multipart/form-data" onsubmit="return OnSubmitTeacherForm(event, this)">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="tName" type="text" name="Name">
+                            <label for="tname">teachers name</label>
+                        </div>
+
+                        <div class="input-field col s12">
+                            <div class="file-field">
+                                <div class="btn">
+                                    <span>Teacher's Photo</span>
+                                    <input type="file" name="postedFile">
+                                </div>
+                                <div class="file-path-wrapper">
+                                    <input class="file-path validate" type="text" placeholder="Upload Blog Banner" id="timage" name="postedFile">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <select name="subid" id="tsub">
+                                <option value=" " disabled="" selected="">Choose Subject</option>
+                                <option value="1">English</option>
+                                <option value="2">Hindi</option>
+                                <option value="3">Physics</option>
+                                <option value="4">Chemistry</option>
+                                <option value="5">Biology</option>
+                                <option value="6">Math</option>
+                                <option value="7">Science</option>
+                                <option value="8">Social Science</option>
+                                <option value="9">Computer</option>
+                            </select>
+                            <label>Select Category</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="submit" class="waves-effect waves-light btn-large" value="Submit">
+                        </div>
+                    </div>
+                </form>
+        <!-------------Form End-------------->
+            </div>
+        </div>
+    </div>
+</div>
+
+
