@@ -1,0 +1,70 @@
+﻿@model List<IntSchl_BOL.Models.Event>
+@{
+    ViewBag.Title = "Events";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Inner Heading Start -->
+<div class="innerHeading-wrap">
+    <div class="container">
+        <h1>Events</h1>
+    </div>
+</div>
+<!-- Inner Heading End -->
+
+<!-- Inner Content Start -->
+<div class="innerContent-wrap">
+    <div class="container">
+        <div class="blog_inner ">
+            <ul class="row unorderList">
+                <!--Event Card-->
+                @{
+                    foreach (var item in Model)
+                    {
+                        <li class="col-lg-4 col-md-6">
+                            <div class="blog_box">
+                                <div class="blogImg">
+                                    <img src="@item.eventPhoto" alt="" id="blog_img">
+                                    <div class="time_box"><span>Event Date:@item.eventDate</span></div>
+                                </div>
+                                <div class="path_box">
+                                    <!--Event Heading-->
+                                    <b><h3><a href="@Url.Action("eventDetails","Home", new { eid = item.eid })">@item.eventName</a></h3></b>
+
+                                </div>
+                            </div>
+                        </li>
+                    }
+                }
+            </ul>
+            <div class="blog-pagination text-center"> <a href="#0"><i class="fas fa-angle-left"></i></a> <a href="#0">01</a> <a href="#0" class="active">02</a> <a href="#0">03</a> <a href="#0"><i class="fas fa-angle-right"></i></a> </div>
+        </div>
+    </div>
+</div>
+<!-- Inner Content end -->
+
+<!--Newsletter Start-->
+<div class="newsletter-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="title">
+                    <h1>Newsletter</h1>
+                </div>
+                <p>Lorem ipsum dolor sit amet consectetur.</p>
+            </div>
+            <div class="col-lg-6">
+                <div class="news-info">
+                    <form>
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="search" placeholder="Email Address">
+                            <div class="form_icon"><i class="fas fa-envelope"></i></div>
+                        </div>
+                        <button class="sigup">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Newsletter End-->

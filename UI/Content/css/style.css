@@ -929,7 +929,7 @@ a.slidebtn i {
 .path_box {
   padding: 26px 26px 16px 26px;}
 
-.class-wrap .path_box{ min-height: 246px;}
+.class-wrap .path_box{ min-height: 100px;}
 .time_box { background: #3ab64c;
   font-size: 14px;
   color: #fff; border-radius: 6px 6px 0 0; padding: 8px 12px; position: absolute; bottom: 0; right: 20px;
@@ -4052,4 +4052,22 @@ textarea.form-control{height: 150px !important;}
     color: red;
     font-size: 12px;
     margin: 0 0 0 4px;
+}
+
+.teacherImg img {
+    height: 19rem !important;
+    width: 19rem !important;
+    object-fit: cover !important;
+}
+
+.class_Img img{
+    height: 14rem !important;
+    object-fit: cover !important;
+}
+
+.blogImg img {
+    height: 235px !important;
+    width: 350px !important;
+    object-fit: cover !important;
+    object-position: center !important;
 }

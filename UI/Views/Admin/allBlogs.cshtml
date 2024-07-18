@@ -42,10 +42,10 @@
                             <td>@item.categoryname</td>
                             <td>@item.postdate</td>
                             <td>
-                                <a href="@Url.Action("updateBlog","Admin", new { stID = item.id })" class="sb2-2-1-edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                <a onclick="return onClickDelete(event, this);" data-emid="@item.id" class="sb2-2-1-edit"><i class=" fa fa-trash-o" aria-hidden="true"></i></a>
                             </td>
                             <td>
-                                <a href="@Url.Action("deleteBlog","Admin", new { stID = item.id })" class="sb2-2-1-edit"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                <a href="@Url.Action("updateBlog","Admin", new { stID = item.id })" class="sb2-2-1-edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                             </td>
                         </tr>
                     }}
@@ -54,6 +54,8 @@
         </table>
     </div>
 </div>
+
+
         
 
 

@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "uploadPhotos";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+
+<div class="sb2-2">
+    <div class="sb2-2-2">
+        <ul>
+            <li>
+                <a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            </li>
+            <li class="active-bre">
+                <a href="#"> Add Photos</a>
+            </li>
+            <li class="page-back">
+                <a href="index.html"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+            </li>
+        </ul>
+    </div>
+    <div class="sb2-2-add-blog sb2-2-1">
+        <div class="box-inn-sp">
+            <div class="inn-title">
+                <h4>Add Photos</h4>
+
+            </div>
+            <div class="bor">
+                <form action="javascript:void(0)" method="post" enctype="multipart/form-data" onsubmit="return OnSubmitPhotoForm(event, this)">
+
+                    @ViewBag.msg
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <div class="file-field">
+                                <div class="btn">
+                                    <span>Event Photo</span>
+                                    <input type="file" name="postedFile" multiple>
+                                </div>
+                                <div class="file-path-wrapper">
+                                    <input  class="file-path validate" type="text" placeholder="Upload Photo" id="eMulPhoto" name="postedFie">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <select name="eid" id="ecat">
+                                <option value=" " disabled="" selected="">Choose Event Category</option>
+                                <option value="5">Coding Competition</option>
+                                <option value="6">Farewell</option>
+                                <option value="7">Cooking Competition</option>
+                                <option value="8">School Camp</option>
+                                <option value="9">Natya Kala</option>
+                                <option value="11">School Tours</option>
+                                <option value="12">Creative Competition</option>
+                                <option value="13">Sports Day</option>
+                                <option value="14">Special Classes</option>
+
+                            </select>
+                            <label>Select Category</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="submit" class="waves-effect waves-light btn-large" value="Submit">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

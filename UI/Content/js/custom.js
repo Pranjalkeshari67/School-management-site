@@ -219,6 +219,244 @@ function eventFormValidations() {
 
 
 
+function OnSubmitPhotoForm(e, t) {
+    debugger;
+    console.log("called");
+    console.log("called");
+    $(".error").remove();
+    if (!PhotoFormValidations()) {
+        console.log("Not Submitted");
+        return false;
+    }
+    else {
+        console.log("Form Submited");
+        $(t).attr("action", "/Admin/uploadPhotos");
+        /* alert("Form Submitted");*/
+    }
+}
+
+function PhotoFormValidations() {
+    //debugger;
+    debugger;
+  
+    var images = $("#eMulPhoto").val();
+    var category = $("#ecat").val();
+    var check = 0;
+    debugger;
+   
+
+    if (category == '') {
+        $('#ecat').after('<span class="error">This field is required</span>');
+        check = 1;
+        //debugger;
+    }
+
+    if (images == '') {
+        $('#eMulPhoto').after('<span class="error">This field is required</span>');
+        check = 1;
+        //debugger;
+    }
+
+
+
+    //if 1 not submit the form, if 0 form will submit
+    if (check == 1) {
+        //debugger;
+        console.log("I am Checked, False 1");
+        return false;
+    }
+    else {
+        //debugger;
+        console.log("I am Checked, True 0");
+        return true;
+    }
+}
+
+
+function OnSubmitContactForm(e, t) {
+    debugger;
+    console.log("called");
+    console.log("called");
+    $(".error").remove();
+    if (!ContactFormValidations()) {
+        console.log("Not Submitted");
+        return false;
+    }
+    else {
+        console.log("Form Submited");
+        $(t).attr("action", "/Home/Contact");
+        /* alert("Form Submitted");*/
+    }
+}
+
+function ContactFormValidations() {
+    //debugger;
+    debugger;
+
+    var Name = $("#cname").val();
+    var Email = $("#cemail").val();
+    var Phone = $("#cphone").val();
+    var Message = $("#cmessage").val();
+
+    var check = 0;
+    debugger;
+
+
+    if (Name == '') {
+        $('#cname').after('<span class="error">This field is required</span>');
+        check = 1;
+        //debugger;
+    }
+
+    if (Email == '') {
+        $('#cemail').after('<span class="error">This field is required</span>');
+        check = 1;
+        //debugger;
+    }
+
+    if (Phone == '') {
+        $('#cemail').after('<span class="error">This field is required</span>');
+        check = 1;
+        //debugger;
+    }
+
+    if (Message == '') {
+        $('#cemail').after('<span class="error">This field is required</span>');
+        check = 1;
+        //debugger;
+    }
+
+
+
+    //if 1 not submit the form, if 0 form will submit
+    if (check == 1) {
+        //debugger;
+        console.log("I am Checked, False 1");
+        return false;
+    }
+    else {
+        //debugger;
+        console.log("I am Checked, True 0");
+        return true;
+    }
+}
+
+
+
+//blog
+function onClickDelete(e, t) {
+    var x = confirm("Are you sure ?");
+    if (x) {
+        debugger;
+        var ob = { blogId: $(t).data("emid") };
+        console.log(ob);
+        debugger;
+        $.ajax({
+            type: 'GET',
+            url: '/Admin/DeleteBlog',
+            data:ob,
+            success: function (data) {
+                if (data == "ok") {
+                    swal("Deleted Successfully !");
+                    setTimeout(function () {
+                        location.reload(true);
+                    }, 1500);
+                } else {
+                    swal("Sorry ! Unable to delete.")
+                }
+            },
+            error: function (error) {
+                swal("Some Errorrrrrr Occurred");
+            }
+        })
+        return true;
+    }
+    else {
+        swal("Make sure to be deleted !");
+        return false;
+    }
+
+}
+
+
+function onClickDeleteEvent(e, t)
+{
+    var x = confirm("Are You Sure!!");
+    if (x)
+    {
+        var ob = { blogId: $(t).data("emid") }
+        console.log(ob);
+        debugger;
+        $.ajax({
+            type: 'GET',
+            url: '/Admin/DeleteEvents',
+            data: ob,
+            success: function (data) {
+                if (data == "ok") {
+                    swal("Deleted Successfully !");
+                    setTimeout(function () {
+                        location.reload(true);
+                    }, 1500);
+                } else {
+                    swal("Sorry ! Unable to delete.")
+                }
+            },
+            error: function (error) {
+                swal("Some Errorrrrrr Occurred");
+            }
+
+        });
+        return true;
+    }
+    else
+    {
+        swal("Make sure to be deleted !");
+        return false;
+    }
+}
+
+
+function onClickDeletePhoto(e, t) {
+    var x = confirm("Are you sure ?");
+    if (x) {
+        debugger;
+        var ob = { pid: $(t).data("emid") };
+        console.log(ob);
+        debugger;
+        $.ajax({
+            type: 'GET',
+            url: '/Admin/DeletePhotos',
+            data: ob,
+            success: function (data) {
+                if (data == "ok") {
+                    swal("Deleted Successfully !");
+                    setTimeout(function () {
+                        location.reload(true);
+                    }, 1500);
+                } else {
+                    swal("Sorry ! Unable to delete.")
+                }
+            },
+            error: function (error) {
+                swal("Some Errorrrrrr Occurred");
+            }
+        })
+        return true;
+    }
+    else {
+        swal("Make sure to be deleted !");
+        return false;
+    }
+}
+
+
+
+
+
+
+
+
+
 
 
 

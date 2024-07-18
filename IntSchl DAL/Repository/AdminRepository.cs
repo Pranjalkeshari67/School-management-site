@@ -105,6 +105,26 @@ namespace IntSchl_DAL.Repository
             return singleBlog;
         }
 
+        public bool deleteBlog(int id)
+        {
+            connection();
+            SqlCommand cmd = new SqlCommand("blogOperations", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@proc_id", "deleteBlog");
+            cmd.Parameters.AddWithValue("@Id", id);
+            con.Open();
+            int i = cmd.ExecuteNonQuery();
+            con.Close();
+            if(i>0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public DataSet Login(User_ user)
         {
             connection();
@@ -144,7 +164,7 @@ namespace IntSchl_DAL.Repository
             }
         }
 
-        public List<Teacher> allTeacher(Teacher tech)
+        public List<Teacher> allTeacher()
         {
             List<Teacher> lst = new List<Teacher>();
             connection();
@@ -194,10 +214,308 @@ namespace IntSchl_DAL.Repository
 
         }
 
-        public List<Event> allEvent(Event ev)
+        public List<Event> allEvent()
         {
             List<Event> lst = new List<Event>();
+            connection();
+            SqlCommand cmd = new SqlCommand("eventOperations",con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@proc_id", "showAllEvents");
+            con.Open();
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            if(dt.Rows.Count>0)
+            {
+                for(int i=0;i<dt.Rows.Count;i++)
+                {
+                    Event ev = new Event();
+                    ev.eid =Convert.ToInt32(dt.Rows[i]["eId"].ToString());
+                    ev.eventName = dt.Rows[i]["eventName"].ToString();
+                    ev.eventPhoto = dt.Rows[i]["eventPhoto"].ToString();
+                    ev.eventDate = dt.Rows[i]["eventDate"].ToString();
+                    lst.Add(ev);
+                }
+            }
+            con.Close();
             return lst;
         }
+
+        public bool deleteEvent(int id )
+        {
+            connection();
+            SqlCommand cmd = new SqlCommand("eventOperations",con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@proc_id", "deleteEvent");
+            cmd.Parameters.AddWithValue("@eid", id);
+
+            con.Open();
+            int key = cmd.ExecuteNonQuery();
+            con.Close();
+            if(key>0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public DataSet GetdropDownList()
+        {
+            connection();
+            SqlCommand cmd = new SqlCommand("STP_GetdropDownList", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            con.Open();
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            sda.Fill(ds);
+            con.Close();
+            return ds;
+        }
+
+        public bool uploadPhotos(Photos ph)
+        {
+            connection();
+            SqlCommand cmd = new SqlCommand("photoOperations", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@proc_id", "addPhotos");
+            cmd.Parameters.AddWithValue("@Photo", ph.Photo);
+            cmd.Parameters.AddWithValue("@eid", ph.eid);
+            con.Open();
+            int i = cmd.ExecuteNonQuery();
+            con.Close();
+            if(i>0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public List<Photos> allPhotos()
+        {
+            List<Photos> lst = new List<Photos>();
+            connection();
+            SqlCommand cmd = new SqlCommand("photoOperations", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@proc_id", "allPhotos");
+            con.Open();
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            if(dt.Rows.Count>0)
+            {
+                for(int i=0;i<dt.Rows.Count;i++)
+                {
+                    Photos ph = new Photos();
+                    ph.pid =Convert.ToInt32( dt.Rows[i]["Pid"].ToString());
+                    ph.Photo = dt.Rows[i]["Photo"].ToString();
+                    ph.eventName = dt.Rows[i]["eventName"].ToString();
+                    lst.Add(ph);
+                }
+            }
+            con.Close();
+
+            return lst;
+        }
+
+        public bool deletePhotos(int id)
+        {
+            connection();
+            SqlCommand cmd = new SqlCommand("photoOperations", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@proc_id", "deletePhotos");
+            cmd.Parameters.AddWithValue("@Pid", id);
+            con.Open();
+            int i = cmd.ExecuteNonQuery();
+            con.Close();
+            if(i>0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        //public List<Photos> Carousel()
+        //{
+        //    connection();
+        //    SqlCommand cmd = new SqlCommand("",con);
+
+        //}
+
+        public List<Event> indexEvents()
+        {
+            List<Event> lst = new List<Event>();
+            connection();
+            SqlCommand cmd = new SqlCommand("eventOperations",con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@proc_id", "IndexEvent");
+            con.Open();
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            if(dt.Rows.Count>0)
+            {
+                for(int i=0;i<dt.Rows.Count;i++)
+                {
+                    Event ev = new Event();
+                    ev.eid =Convert.ToInt32( dt.Rows[i]["eId"].ToString());
+                    ev.eventName = dt.Rows[i]["eventName"].ToString();
+                    ev.eventPhoto = dt.Rows[i]["eventPhoto"].ToString();
+                    ev.eventDate = dt.Rows[i]["eventDate"].ToString();
+                    lst.Add(ev);
+                }
+            }
+            con.Close();
+            return (lst);
+        }
+
+        public List<Photos> indexCarousel()
+        {
+            List<Photos> lst = new List<Photos>();
+            connection();
+            SqlCommand cmd = new SqlCommand("photoOperations", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@proc_id", "IndexCarousel");
+            con.Open();
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            if (dt.Rows.Count > 0)
+            {
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    Photos ph = new Photos();
+                    
+                    
+                    ph.Photo = dt.Rows[i]["Photo"].ToString();
+                    lst.Add(ph);
+                    
+                }
+            }
+            con.Close();
+            return (lst);
+        }
+
+        public List<Photos> indexPhotos()
+        {
+            List<Photos> lst = new List<Photos>();
+            connection();
+            SqlCommand cmd = new SqlCommand("photoOperations", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@proc_id", "indexPhotos");
+            con.Open();
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            if (dt.Rows.Count > 0)
+            {
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    Photos ph = new Photos();
+
+
+                    ph.Photo = dt.Rows[i]["Photo"].ToString();
+                    lst.Add(ph);
+
+                }
+            }
+            con.Close();
+            return (lst);
+        }
+
+        public List<Teacher> indexTeachers()
+        {
+            List<Teacher> lst = new List<Teacher>();
+            connection();
+            SqlCommand cmd = new SqlCommand("teacherOperations", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@proc_id", "indexTeachers  ");
+            con.Open();
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            if (dt.Rows.Count > 0)
+            {
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    Teacher th = new Teacher();
+
+
+                    th.Photo = dt.Rows[i]["Photo"].ToString();
+                    th.Name = dt.Rows[i]["Name"].ToString();
+                    th.Subject_name = dt.Rows[i]["Subject_name"].ToString();
+                    lst.Add(th);
+                }
+            }
+            con.Close();
+            return (lst);
+        }
+
+        public List<blog> indexblog()
+        {
+            List<blog> lst = new List<blog>();
+            connection();
+            SqlCommand cmd = new SqlCommand("blogOperations", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@proc_id", "indexBlogs");
+            con.Open();
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            if (dt.Rows.Count > 0)
+            {
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    blog bg = new blog();
+
+
+                    bg.id =Convert.ToInt32( dt.Rows[i]["Id"].ToString());
+                    bg.image = dt.Rows[i]["Image"].ToString();
+                    bg.heading = dt.Rows[i]["Heading"].ToString();
+                    bg.shortdesc = dt.Rows[i]["shortDesc"].ToString();
+                    bg.postdate = dt.Rows[i]["PostDate"].ToString();
+                    lst.Add(bg);
+                }
+            }
+            con.Close();
+            return (lst);
+        }
+
+        public bool Contact(Contact cnt) 
+        {
+            List<Contact> lst = new List<Contact>();
+            connection();
+            SqlCommand cmd = new SqlCommand("contactOperations", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@proc_id", "contactOperations");
+            cmd.Parameters.AddWithValue("@Name", cnt.name);
+            cmd.Parameters.AddWithValue("@Email", cnt.email);
+            cmd.Parameters.AddWithValue("@Phone", cnt.phone);
+            cmd.Parameters.AddWithValue("@message", cnt.cmessage);
+            con.Open();
+            int i = cmd.ExecuteNonQuery();
+         
+            con.Close();
+            if(i>0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+
     }
 }

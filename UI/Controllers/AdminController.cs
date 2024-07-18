@@ -6,22 +6,44 @@ using System.Web.Mvc;
 using IntSchl_BOL.Models;
 using IntSchl_BLL;
 using System.IO;
+using System.Data;
+using Authentication.Controllers;
 
 namespace UI.Controllers
 {
-    public class AdminController : Controller
+    public class AdminController : AdminBaseController
     {
         // GET: Admin
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
         }
+
+       
 
 
         //Blogs Section Start
         [HttpGet]
         public ActionResult addBlog()
         {
+            int count1 = 0;
+            Admin model = new Admin();
+            List<SelectListItem> dropDownList = new List<SelectListItem>();
+            DataSet ds = model.GetdropDownList();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    if (count1 == 0)
+                    {
+                        dropDownList.Add(new SelectListItem { Text = "--Select Blog Category--", Value = "0" });
+                    }
+                    dropDownList.Add(new SelectListItem { Text = Convert.ToString(r["Category"]), Value = Convert.ToString(r["Id"]) });
+                    count1 = count1 + 1;
+                }
+            }
+            ViewBag.dropDownList = dropDownList;
             return View();
         }
         [HttpPost]
@@ -52,9 +74,18 @@ namespace UI.Controllers
             return View();
         }
 
-        public ActionResult DeleteBlog(int id)
+        public JsonResult DeleteBlog(int blogid)
         {
-            return View();
+            Admin admin = new Admin();
+            bool key = admin.deleteBlog(blogid);
+            if (key)
+            {
+                return Json("ok", JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json("nok", JsonRequestBehavior.AllowGet);
+            }
         }
 
         public ActionResult UpdateBlog(int id)
@@ -93,15 +124,15 @@ namespace UI.Controllers
         }
 
         [HttpGet]
-        public ActionResult allTeacher(Teacher tech)
+        public ActionResult allTeacher()
         {
             Admin admin = new Admin();
             List<Teacher> lst = new List<Teacher>();
-            lst=admin.allTeacher(tech);
+            lst=admin.allTeacher();
             return View(lst);
         }
         [HttpPost]
-        public ActionResult allTeacher()
+        public ActionResult allTeacher(Teacher tech)
         {
             return View();
         }
@@ -139,27 +170,97 @@ namespace UI.Controllers
         [HttpGet]
         public ActionResult allEvents()
         {
-            return View();
+            List<Event> lst = new List<Event>();
+            Admin admin = new Admin();
+            lst = admin.allEvent();
+            return View(lst);
         }
         [HttpPost]
         public ActionResult allEvents(Event ev)
         {
-            List<Event> lst = new List<Event>();
-            Admin admin = new Admin();
-            lst=admin.allEvent(ev);
-            return View(lst);
+            return View();
         }
 
-        public ActionResult DeleteEvents()
+        public JsonResult DeleteEvents(int blogId)
         {
-            return View();
+            Admin admin = new Admin();
+            bool key = admin.deleteEvent(blogId);
+            if(key)
+            {
+                return Json("ok", JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json("nok", JsonRequestBehavior.AllowGet);
+            }
         }
 
         public ActionResult UpdateEvents()
         {
             return View();
         }
+        [HttpGet]
+        public ActionResult uploadPhotos()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public ActionResult uploadPhotos(Photos ph, List<HttpPostedFileBase> postedFile)
+        {
+            bool key=false;
+            Admin admin = new Admin();
+            foreach(var item in postedFile)
+            {
+                if (postedFile != null)
+                {
+                    ph.Photo = "/Content/Uploaded Images/" + Guid.NewGuid() + Path.GetExtension(item.FileName);
+                    item.SaveAs(Path.Combine(Server.MapPath(ph.Photo)));
+                }
+                key = admin.uploadPhotos(ph);
+               
+            }
+           if(key)
+            {
+                ViewBag.msg = "Uploaded Sucessfully"; 
+            }
+            else
+            {
+                ViewBag.msg = "NUploaded Sucessfully";
+            }
+
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult allPhotos()
+        {
+            List<Photos> lst = new List<Photos>();
+            Admin admin = new Admin();
+            lst= admin.allPhotos();
+            return View(lst);
+        }
+        [HttpPost]
+        public ActionResult allPhotos(Photos ph)
+        {
+            return View();
+        }
+
+        
+        public JsonResult DeletePhotos(int pid)
+        {
+            Admin admin = new Admin();
+            bool key = admin.deletePhoto(pid);
+            if(key)
+            {
+                return Json("ok", JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json("nok", JsonRequestBehavior.AllowGet);
+            }
+        }
+       
 
     }
 }

@@ -48,6 +48,29 @@ namespace IntSchl_BOL.Models
         public string eventName { get; set; }
         public string eventPhoto { get; set; }
         public string eventDate { get; set; }
+        public List<Event> lstAllEvents { get; set; }
+    }
+
+    public class Photos
+    {
+        public int pid { get; set; }
+        public string Photo { get; set; }
+        public int eid { get; set; }
+        public string eventName { get; set; }
+    }
+
+    public class Contact
+    {
+        public int id { get; set; }
+        public string name { get; set; }
+        public string email { get; set; }
+        public string phone { get; set; }
+        public string cmessage { get; set; }
+    }
+
+    public class Lists
+    {
+        public List<Event> ListEvent { get; set; }
     }
 
 

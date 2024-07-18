@@ -1,8 +1,57 @@
-﻿
+﻿@model List<IntSchl_BOL.Models.Event>
 @{
     ViewBag.Title = "allEvents";
     Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
 }
 
-<h2>allEvents</h2>
+<div class="sb2-2">
+    <div class="sb2-2-2">
+        <ul>
+            <li>
+                <a href=""><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            </li>
+            <li class="active-bre">
+                <a href="#"> All Events</a>
+            </li>
+        </ul>
+    </div>
+    <div class="sb2-2-1">
+        <h2>All Events</h2>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Event Name</th>
+                    <th>Photo</th>
+                    <th>Event Date</th>
+                    <th>Delete</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @{
+                    int count = 0;
+                    foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td>@count</td>
+                            <td>@item.eventName</td>
+                            <td><img id="adminTeacherImg" src="@item.eventPhoto" /></td>
+                            <td>@item.eventDate</td>
+                            <td>
+                                <a onclick="return onClickDeleteEvent(event, this)" data-emid="@item.eid" class="sb2-2-1-edit"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                            </td>
+                            <td>
+                                <a href="@Url.Action("deleteTeacher","Admin", new { eid = item.eid})" class="sb2-2-1-edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                            </td>
+                        </tr>
+                    }}
+
+            </tbody>
+        </table>
+    </div>
+</div>
 

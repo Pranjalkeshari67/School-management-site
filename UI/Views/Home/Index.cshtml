@@ -5,21 +5,30 @@
 }
 
 
+
+
 <!-- Revolution slider start -->
 <div class="tp-banner-container">
     <div class="tp-banner">
         <ul>
-            <li data-slotamount="7" data-transition="3dcurtain-horizontal" data-masterspeed="1000" data-saveperformance="on">
-                <img alt="" src="~/Content/images/dummy.png" data-lazyload="/Content/images/blog2.jpg">
-                <div class="caption lft large-title tp-resizeme slidertext2" data-x="center" data-y="170" data-speed="600" data-start="1600"><span> Education Bright Future </span></div>
-                <div class="caption lfb large-title tp-resizeme slidertext3" data-x="center" data-y="260" data-speed="600" data-start="2200">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nibh dolor, gravida faucibus dolor consectetur, <br>
-                    pulvinar rhoncus risus. Fusce vel rutrum mi. Suspendisse pretium tellus eu ipsum.
-                </div>
-                <div class="caption lfb large-title tp-resizeme slidertext4" data-x="330" data-y="350" data-speed="600" data-start="2800"> <a href="#"><i class="fas fa-edit"></i> Enroll Today</a> </div>
-                <div class="caption lfb large-title tp-resizeme slidertext4 slidertext5" data-x="610" data-y="350" data-speed="600" data-start="3400"> <a href="#"><i class="far fa-calendar-alt"></i> Schedule a Tour</a> </div>
-            </li>
-            <li data-slotamount="7" data-transition="slotzoom-horizontal" data-masterspeed="1000" data-saveperformance="on">
+            @{
+                foreach (var item in ViewBag.carousel)
+                {
+                    <li data-slotamount="7" data-transition="3dcurtain-horizontal" data-masterspeed="1000" data-saveperformance="on">
+                        <img alt="" src="@item.Photo" data-lazyload="@item.Photo">
+                        <div class="caption lft large-title tp-resizeme slidertext2" data-x="center" data-y="170" data-speed="600" data-start="1600"><span> Education Bright Future </span></div>
+                        <div class="caption lfb large-title tp-resizeme slidertext3" data-x="center" data-y="260" data-speed="600" data-start="2200">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nibh dolor, gravida faucibus dolor consectetur, <br>
+                            pulvinar rhoncus risus. Fusce vel rutrum mi. Suspendisse pretium tellus eu ipsum.
+                        </div>
+                        <div class="caption lfb large-title tp-resizeme slidertext4" data-x="330" data-y="350" data-speed="600" data-start="2800"> <a href="#"><i class="fas fa-edit"></i> Enroll Today</a> </div>
+                        <div class="caption lfb large-title tp-resizeme slidertext4 slidertext5" data-x="610" data-y="350" data-speed="600" data-start="3400"> <a href="#"><i class="far fa-calendar-alt"></i> Schedule a Tour</a> </div>
+                    </li>
+
+                }
+            }
+
+            @*<li data-slotamount="7" data-transition="slotzoom-horizontal" data-masterspeed="1000" data-saveperformance="on">
                 <img alt="" src="~/Content/images/dummy.png" data-lazyload="/Content/images/blog1.jpg">
                 <div class="caption lft large-title tp-resizeme slidertext2" data-x="center" data-y="170" data-speed="600" data-start="1600"><span> International School </span></div>
                 <div class="caption lfb large-title tp-resizeme slidertext3" data-x="center" data-y="260" data-speed="600" data-start="2200">
@@ -38,7 +47,7 @@
                 </div>
                 <div class="caption lfb large-title tp-resizeme slidertext4" data-x="330" data-y="350" data-speed="600" data-start="2800"> <a href="#"><i class="fas fa-edit"></i> Enroll Today</a> </div>
                 <div class="caption lfb large-title tp-resizeme slidertext4 slidertext5" data-x="610" data-y="350" data-speed="600" data-start="3400"> <a href="#"><i class="far fa-calendar-alt"></i> Schedule a Tour</a> </div>
-            </li>
+            </li>*@
         </ul>
     </div>
 </div>
@@ -79,7 +88,7 @@
                     <!-- single-course-categories -->
                     <div class="categories-course">
                         <div class="item-inner">
-                            <div class="cours-icon"> <span class="coure-icon-inner"> <img src="images/support.png" alt=""> </span> </div>
+                            <div class="cours-icon"> <span class="coure-icon-inner"> <img src="~/Content/images/support.png" alt=""> </span> </div>
                             <div class="cours-title">
                                 <h4>Life Time Support</h4>
                                 <p>Lorem ipsum dolor sit amet, adipiscing elit. Vivamus nibh dolor gravida at eleifend</p>
@@ -92,7 +101,7 @@
                     <!-- single-course-categories -->
                     <div class="categories-course">
                         <div class="item-inner">
-                            <div class="cours-icon"> <span class="coure-icon-inner"> <img src="images/scholarship.png" alt=""> </span> </div>
+                            <div class="cours-icon"> <span class="coure-icon-inner"> <img src="~/Content/images/scholarship.png" alt=""> </span> </div>
                             <div class="cours-title">
                                 <h4>Scholarship News</h4>
                                 <p>Lorem ipsum dolor sit amet, adipiscing elit. Vivamus nibh dolor gravida at eleifend</p>
@@ -105,14 +114,14 @@
         </div>
     </div>
 </div>
-
 <!-- School End -->
+
 <!-- About Start -->
 <div class="about-wrap  " id="about">
     <div class="container">
         <div class="row">
             <div class="col-lg-7">
-                <div class="aboutImg"><img src="images/aboutImg.png" alt=""></div>
+                <div class="aboutImg"><img src="~/Content/images/aboutImg.png" alt=""></div>  <!--DYNAMIC-->
             </div>
             <div class="col-lg-5">
                 <div class="about_box">
@@ -123,7 +132,7 @@
                     <ul class="edu_list">
                         <li>
                             <div class="learing-wrp">
-                                <div class="edu_icon"><img src="images/education.png" alt=""></div>
+                                <div class="edu_icon"><img src="~/Content/images/education.png" alt=""></div>
                                 <div class="learn_info">
                                     <h3>Special Education</h3>
                                     <p>Lorem ipsum dolor sit amet, adipiscing elit. Vivamus nibh dolor gravida at eleifend</p>
@@ -132,7 +141,7 @@
                         </li>
                         <li>
                             <div class="learing-wrp">
-                                <div class="edu_icon"><img src="images/class.png" alt=""></div>
+                                <div class="edu_icon"><img src="~/Content/images/class.png" alt=""></div>
                                 <div class="learn_info">
                                     <h3>Honors classes</h3>
                                     <p>Lorem ipsum dolor sit amet, adipiscing elit. Vivamus nibh dolor gravida at eleifend</p>
@@ -141,7 +150,7 @@
                         </li>
                         <li>
                             <div class="learing-wrp">
-                                <div class="edu_icon"><img src="images/academy.png" alt=""></div>
+                                <div class="edu_icon"><img src="~/Content/images/academy.png" alt=""></div>
                                 <div class="learn_info">
                                     <h3>Traditional academies</h3>
                                     <p>Lorem ipsum dolor sit amet, adipiscing elit. Vivamus nibh dolor gravida at eleifend</p>
@@ -155,65 +164,39 @@
     </div>
 </div>
 <!-- About End -->
-<!-- Classes Start -->
+
+<!-- Event Start -->
 <div class="class-wrap">
     <div class="container">
         <div class="title">
-            <h1> Our Popular Classes </h1>
+            <h1> Our Popular Events</h1>
         </div>
-        <ul class="owl-carousel  ">
-            <li class="item">
-                <div class="class_box">
-                    <div class="class_Img">
-                        <img src="images/education_img.jpg" alt="">
-                        <div class="time_box"><span>08:00 am - 10:00 am</span></div>
-                    </div>
-                    <div class="path_box">
-                        <h3><a href="#">Education Programs System</a></h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <div class="students_box">
-                            <div class="students">Students: 30</div>
-                            <div class="stud_fee">Fee: $150</div>
+        <ul class="owl-carousel">
+            @{
+                foreach (var i in ViewBag.lstAllEvents)
+                {
+
+                    <li class="item">
+                        <div class="class_box">
+                            <div class="class_Img">
+                                <img src="@i.eventPhoto" alt="">         <!--DYNAMIC-->
+                                <div class="time_box"><span>@i.eventDate</span></div> <!--DYNAMIC-->
+                            </div>
+                            <div class="path_box">
+                                <h3><a href="#">@i.eventName</a></h3>  <!--DYNAMIC-->
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </li>
-            <li class="item">
-                <div class="class_box">
-                    <div class="class_Img">
-                        <img src="images/kid_game.jpg" alt="">
-                        <div class="time_box"><span>08:00 am - 10:00 am</span></div>
-                    </div>
-                    <div class="path_box">
-                        <h3><a href="#">Games Program held in a Week</a></h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nibh dolor.</p>
-                        <div class="students_box">
-                            <div class="students">Students: 30</div>
-                            <div class="stud_fee">Fee: $150</div>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li class="item">
-                <div class="class_box">
-                    <div class="class_Img">
-                        <img src="images/lab.jpg" alt="">
-                        <div class="time_box"><span>08:00 am - 10:00 am</span></div>
-                    </div>
-                    <div class="path_box">
-                        <h3><a href="#">Labs Programs</a></h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nibh dolor, gravida faucibus dolor adipiscing consectetur.</p>
-                        <div class="students_box">
-                            <div class="students">Students: 30</div>
-                            <div class="stud_fee">Fee: $150</div>
-                        </div>
-                    </div>
-                </div>
-            </li>
+                    </li>
+
+
+                }
+
+            }
         </ul>
     </div>
 </div>
-<!-- Classes End -->
+<!-- Event End -->
+
 <!-- Choice Start -->
 <div class="choice-wrap ">
     <div class="container">
@@ -225,6 +208,7 @@
     </div>
 </div>
 <!-- Choice End -->
+
 <!-- Video Start -->
 <div class="video-wrap  ">
     <div class="container">
@@ -237,6 +221,7 @@
     </div>
 </div>
 <!-- Video End -->
+
 <!-- Gallery Start -->
 <div class="gallery-wrap ">
     <div class="container">
@@ -254,60 +239,30 @@
             </div>
             <div class="col-lg-9">
                 <div class="row">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="galleryImg">
-                            <img src="images/gallery-1.jpg" alt="">
-                            <div class="portfolio-overley">
-                                <div class="content"> <a href="images/gallery-1.jpg" class="fancybox image-link" data-fancybox="images" title="Image Caption Here"><i class="fas fa-search-plus"></i></a> </div>
+                    @{
+                        foreach (var item in ViewBag.indexPhotos)
+                        {
+                            <div class="col-lg-4 col-md-6">
+                                <div class="galleryImg">
+                                    <!--DYNAMIC-->
+                                    <img src="@item.Photo" alt="">
+                                    <div class="portfolio-overley">
+                                        <div class="content"> <a href="@item.Photo" class="fancybox image-link" data-fancybox="images" title="Image Caption Here"><i class="fas fa-search-plus"></i></a> </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="galleryImg">
-                            <img src="images/gallery-2.jpg" alt="">
-                            <div class="portfolio-overley">
-                                <div class="content"> <a href="images/gallery-2.jpg" class="fancybox image-link" data-fancybox="images" title="Image Caption Here"><i class="fas fa-search-plus"></i></a> </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="galleryImg">
-                            <img src="images/gallery-3.jpg" alt="">
-                            <div class="portfolio-overley">
-                                <div class="content"> <a href="images/gallery-3.jpg" class="fancybox image-link" data-fancybox="images" title="Image Caption Here"><i class="fas fa-search-plus"></i></a> </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="galleryImg">
-                            <img src="images/gallery-4.jpg" alt="">
-                            <div class="portfolio-overley">
-                                <div class="content"> <a href="images/gallery-4.jpg" class="fancybox image-link" data-fancybox="images" title="Image Caption Here"><i class="fas fa-search-plus"></i></a> </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="galleryImg">
-                            <img src="images/gallery-5.jpg" alt="">
-                            <div class="portfolio-overley">
-                                <div class="content"> <a href="images/gallery-5.jpg" class="fancybox image-link" data-fancybox="images" title="Image Caption Here"><i class="fas fa-search-plus"></i></a> </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="galleryImg">
-                            <img src="images/gallery-6.jpg" alt="">
-                            <div class="portfolio-overley">
-                                <div class="content"> <a href="images/gallery-6.jpg" class="fancybox image-link" data-fancybox="images" title="Image Caption Here"><i class="fas fa-search-plus"></i></a> </div>
-                            </div>
-                        </div>
-                    </div>
+                            
+
+                        }
+                    }
+
                 </div>
             </div>
         </div>
     </div>
 </div>
 <!-- Gallery End -->
+
 <!-- Testimonials Start -->
 <div class="testimonials-wrap ">
     <div class="container">
@@ -388,6 +343,7 @@
     </div>
 </div>
 <!-- Testimonials End -->
+
 <!-- Enroll Start -->
 <div class="choice-wrap enroll-wrap">
     <div class="container">
@@ -399,6 +355,7 @@
     </div>
 </div>
 <!-- Enroll End -->
+
 <!-- Teacher Start -->
 <section class="teachers-area-three teacher-wrap pt-100 pb-70  ">
     <div class="container">
@@ -406,83 +363,37 @@
             <h1>Our Teachers</h1>
         </div>
         <div class="row">
-            <div class="col-lg-3 col-sm-6">
-                <div class="single-teachers">
-                    <div class="teacherImg">
-                        <img src="images/teachers01.jpg" alt="Image">
-                        <ul class="social-icons list-inline">
-                            <!-- social-icons -->
-                            <li class="social-facebook"> <a href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a> </li>
-                            <li class="social-twitter"> <a href=""><i class="fab fa-twitter" aria-hidden="true"></i></a> </li>
-                            <li class="social-linkedin"> <a href="#"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a> </li>
-                            <li class="social-googleplus"> <a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a> </li>
-                        </ul>
+            @{
+                foreach (var item in ViewBag.indexTeachers)
+                {
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-teachers">
+                            <div class="teacherImg">
+                                <img src="@item.Photo" alt="Image">
+                                <ul class="social-icons list-inline">
+                                    <!-- social-icons -->
+                                    <li class="social-facebook"> <a href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a> </li>
+                                    <li class="social-twitter"> <a href=""><i class="fab fa-twitter" aria-hidden="true"></i></a> </li>
+                                    <li class="social-linkedin"> <a href="#"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a> </li>
+                                    <li class="social-googleplus"> <a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a> </li>
+                                </ul>
+                            </div>
+                            <div class="teachers-content">
+                                <h3>@item.Name</h3>
+                                <div class="designation">@item.Subject_name</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="teachers-content">
-                        <h3>Stella Roffin</h3>
-                        <div class="designation">Art teacher</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="single-teachers">
-                    <div class="teacherImg">
-                        <img src="images/teachers02.jpg" alt="Image">
-                        <ul class="social-icons list-inline">
-                            <!-- social-icons -->
-                            <li class="social-facebook"> <a href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a> </li>
-                            <li class="social-twitter"> <a href=""><i class="fab fa-twitter" aria-hidden="true"></i></a> </li>
-                            <li class="social-linkedin"> <a href="#"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a> </li>
-                            <li class="social-googleplus"> <a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a> </li>
-                        </ul>
-                    </div>
-                    <div class="teachers-content">
-                        <h3>Chris Miller</h3>
-                        <div class="designation">Mathematic</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="single-teachers">
-                    <div class="teacherImg">
-                        <img src="images/teachers03.jpg" alt="Image">
-                        <ul class="social-icons list-inline">
-                            <!-- social-icons -->
-                            <li class="social-facebook"> <a href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a> </li>
-                            <li class="social-twitter"> <a href=""><i class="fab fa-twitter" aria-hidden="true"></i></a> </li>
-                            <li class="social-linkedin"> <a href="#"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a> </li>
-                            <li class="social-googleplus"> <a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a> </li>
-                        </ul>
-                    </div>
-                    <div class="teachers-content">
-                        <h3>Jesica Matt</h3>
-                        <div class="designation">English Teacher</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="single-teachers">
-                    <div class="teacherImg">
-                        <img src="images/teachers04.jpg" alt="Image">
-                        <ul class="social-icons list-inline">
-                            <!-- social-icons -->
-                            <li class="social-facebook"> <a href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a> </li>
-                            <li class="social-twitter"> <a href=""><i class="fab fa-twitter" aria-hidden="true"></i></a> </li>
-                            <li class="social-linkedin"> <a href="#"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a> </li>
-                            <li class="social-googleplus"> <a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a> </li>
-                        </ul>
-                    </div>
-                    <div class="teachers-content">
-                        <h3>Lena Bodie</h3>
-                        <div class="designation">Science Teacher</div>
-                    </div>
-                </div>
-            </div>
+                }
+            }
+
+            
         </div>
     </div>
 </section>
 
 <!-- Teacher Start -->
+
 <!-- Blog Start -->
 <div class="blog-wrap flight-wrap ">
     <div class="container">
@@ -490,42 +401,25 @@
             <h1> Our Blog </h1>
         </div>
         <ul class="row unorderList">
-            <li class="col-lg-4">
-                <div class="blog_box">
-                    <div class="blogImg">
-                        <img src="images/blog1.jpg" alt="">
-                        <div class="time_box"><span>08:00 am - 10:00 am</span></div>
-                    </div>
-                    <div class="path_box">
-                        <h3><a href="#">Education Programs</a></h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nibh dolor gravida.</p>
-                    </div>
-                </div>
-            </li>
-            <li class="col-lg-4">
-                <div class="blog_box">
-                    <div class="blogImg">
-                        <img src="images/blog2.jpg" alt="">
-                        <div class="time_box"><span>08:00 am - 10:00 am</span></div>
-                    </div>
-                    <div class="path_box">
-                        <h3><a href="#">Games Program</a></h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nibh dolor, gravida faucibus dolor consectetur.</p>
-                    </div>
-                </div>
-            </li>
-            <li class="col-lg-4">
-                <div class="blog_box">
-                    <div class="blogImg">
-                        <img src="images/blog3.jpg" alt="">
-                        <div class="time_box"><span>08:00 am - 10:00 am</span></div>
-                    </div>
-                    <div class="path_box">
-                        <h3><a href="#">Labs Programs</a></h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nibh dolor, gravida faucibus dolor consectetur.</p>
-                    </div>
-                </div>
-            </li>
+            @{
+                foreach (var item in ViewBag.indexBlog)
+                {
+                    <li class="col-lg-4">
+                        <div class="blog_box">
+                            <div class="blogImg">
+                                <img src="@item.image" alt="">
+                                <div class="time_box"><span>@item.postdate</span></div>
+                            </div>
+                            <div class="path_box">
+                                <h3><a href="#">@item.heading</a></h3>
+                                <p>@item.shortdesc</p>
+                            </div>
+                        </div>
+                    </li>
+                }
+            }
+
+        
         </ul>
     </div>
 </div>
