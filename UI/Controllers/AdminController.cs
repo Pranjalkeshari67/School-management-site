@@ -6,10 +6,12 @@ using System.Web.Mvc;
 using IntSchl_BOL.Models;
 using IntSchl_BLL;
 using System.IO;
+using System.Data;
+using Authentication.Controllers;
 
 namespace UI.Controllers
 {
-    public class AdminController : Controller
+    public class AdminController : AdminBaseController
     {
         // GET: Admin
         public ActionResult Index()
@@ -22,6 +24,23 @@ namespace UI.Controllers
         [HttpGet]
         public ActionResult addBlog()
         {
+            int count1 = 0;
+            Admin model = new Admin();
+            List<SelectListItem> dropDownList = new List<SelectListItem>();
+            DataSet ds = model.GetdropDownList();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    if (count1 == 0)
+                    {
+                        dropDownList.Add(new SelectListItem { Text = "--Select Blog Category--", Value = "0" });
+                    }
+                    dropDownList.Add(new SelectListItem { Text = Convert.ToString(r["Category"]), Value = Convert.ToString(r["Id"]) });
+                    count1 = count1 + 1;
+                }
+            }
+            ViewBag.dropDownList = dropDownList;
             return View();
         }
         [HttpPost]
@@ -52,9 +71,18 @@ namespace UI.Controllers
             return View();
         }
 
-        public ActionResult DeleteBlog(int id)
+        public JsonResult DeleteBlog(int id)
         {
-            return View();
+            Admin admin = new Admin();
+            bool key = admin.deleteBlog(id);
+            if (key)
+            {
+                return Json("ok", JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json("nok", JsonRequestBehavior.AllowGet);
+            }
         }
 
         public ActionResult UpdateBlog(int id)
@@ -93,15 +121,15 @@ namespace UI.Controllers
         }
 
         [HttpGet]
-        public ActionResult allTeacher(Teacher tech)
+        public ActionResult allTeacher()
         {
             Admin admin = new Admin();
             List<Teacher> lst = new List<Teacher>();
-            lst=admin.allTeacher(tech);
+            lst=admin.allTeacher();
             return View(lst);
         }
         [HttpPost]
-        public ActionResult allTeacher()
+        public ActionResult allTeacher(Teacher tech)
         {
             return View();
         }
@@ -139,15 +167,15 @@ namespace UI.Controllers
         [HttpGet]
         public ActionResult allEvents()
         {
-            return View();
+            List<Event> lst = new List<Event>();
+            Admin admin = new Admin();
+            lst = admin.allEvent();
+            return View(lst);
         }
         [HttpPost]
         public ActionResult allEvents(Event ev)
         {
-            List<Event> lst = new List<Event>();
-            Admin admin = new Admin();
-            lst=admin.allEvent(ev);
-            return View(lst);
+            return View();
         }
 
         public ActionResult DeleteEvents()

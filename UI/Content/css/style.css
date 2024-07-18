@@ -4053,3 +4053,9 @@ textarea.form-control{height: 150px !important;}
     font-size: 12px;
     margin: 0 0 0 4px;
 }
+
+.teacherImg img {
+    height: 19rem !important;
+    width: 19rem !important;
+    object-fit: cover !important;
+}

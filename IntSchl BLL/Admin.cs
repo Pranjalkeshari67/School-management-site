@@ -31,16 +31,22 @@ namespace IntSchl_BLL
             return repo.bindSingleBlog(Id);
         }
 
+        public bool deleteBlog(int id)
+        {
+            AdminRepository repo = new AdminRepository();
+            return repo.deleteBlog(id);
+        }
+
         public bool addTeacher(Teacher tech)
         {
             AdminRepository repo = new AdminRepository();
             return repo.addTeacher(tech);
         }
 
-        public List<Teacher> allTeacher(Teacher tech)
+        public List<Teacher> allTeacher()
         {
             AdminRepository repo = new AdminRepository();
-            return repo.allTeacher(tech);
+            return repo.allTeacher();
         }
 
         public bool addEvent(Event ev)
@@ -49,16 +55,24 @@ namespace IntSchl_BLL
             return repo.addEvent(ev);
         }
 
-        public List<Event> allEvent(Event ev)
+        public List<Event> allEvent()
         {
             AdminRepository repo = new AdminRepository();
-            return repo.allEvent(ev);
+            return repo.allEvent();
         }
 
         public DataSet Login(User_ user)
         {
             AdminRepository repo = new AdminRepository();
             return repo.Login(user);
+        }
+
+        //
+        public DataSet GetdropDownList()
+        {
+            AdminRepository adr = new AdminRepository();
+            DataSet ds = adr.GetdropDownList();
+            return ds;
         }
 
 

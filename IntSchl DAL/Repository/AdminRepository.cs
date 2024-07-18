@@ -105,6 +105,26 @@ namespace IntSchl_DAL.Repository
             return singleBlog;
         }
 
+        public bool deleteBlog(int id)
+        {
+            connection();
+            SqlCommand cmd = new SqlCommand("deleteBlog",con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@proc_id", "deleteBlog");
+            cmd.Parameters.AddWithValue("@Id", id);
+            con.Open();
+            int i = cmd.ExecuteNonQuery();
+            con.Close();
+            if(i>0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public DataSet Login(User_ user)
         {
             connection();
@@ -144,7 +164,7 @@ namespace IntSchl_DAL.Repository
             }
         }
 
-        public List<Teacher> allTeacher(Teacher tech)
+        public List<Teacher> allTeacher()
         {
             List<Teacher> lst = new List<Teacher>();
             connection();
@@ -194,10 +214,43 @@ namespace IntSchl_DAL.Repository
 
         }
 
-        public List<Event> allEvent(Event ev)
+        public List<Event> allEvent()
         {
             List<Event> lst = new List<Event>();
+            connection();
+            SqlCommand cmd = new SqlCommand("eventOperations",con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@proc_id", "showAllEvents");
+            con.Open();
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            if(dt.Rows.Count>0)
+            {
+                for(int i=0;i<dt.Rows.Count;i++)
+                {
+                    Event ev = new Event();
+                    ev.eventName = dt.Rows[i]["eventName"].ToString();
+                    ev.eventPhoto = dt.Rows[i]["eventPhoto"].ToString();
+                    ev.eventDate = dt.Rows[i]["eventDate"].ToString();
+                    lst.Add(ev);
+                }
+            }
+            con.Close();
             return lst;
+        }
+
+        public DataSet GetdropDownList()
+        {
+            connection();
+            SqlCommand cmd = new SqlCommand("STP_GetdropDownList", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            con.Open();
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            sda.Fill(ds);
+            con.Close();
+            return ds;
         }
     }
 }

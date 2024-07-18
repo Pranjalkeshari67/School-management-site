@@ -29,6 +29,7 @@ namespace UI.Controllers
         [HttpGet]
         public ActionResult About()
         {
+
             return View();
         }
         [HttpPost]
@@ -40,24 +41,32 @@ namespace UI.Controllers
         [HttpGet]
         public ActionResult Teachers()
         {
-            return View();
+            List<Teacher> lst = new List<Teacher>(); 
+            Admin admin = new Admin();
+            lst=admin.allTeacher();
+            return View(lst);
         }
         [HttpPost]
         public ActionResult Teachers(User_ user)
         {
             return View();
         }
-
+        //Event section start
         [HttpGet]
-        public ActionResult Classes()
+        public ActionResult Events()
         {
-            return View();
+            List<Event> lst = new List<Event>();
+            Admin admin = new Admin();
+           lst= admin.allEvent();
+            return View(lst);
         }
         [HttpPost]
-        public ActionResult Classes(User_ user)
+        public ActionResult Events(User_ user)
         {
             return View();
         }
+
+        //Blog Section Strat
 
         [HttpGet]
         public ActionResult Blog()
@@ -87,6 +96,8 @@ namespace UI.Controllers
             return View();
         }
 
+        //Blog Section end
+
         [HttpGet]
         public ActionResult Contact()
         {
@@ -97,6 +108,11 @@ namespace UI.Controllers
         {
             return View();
         }
+
+
+
+
+        //Login Logout Section
         [HttpGet]
         public ActionResult Login()
         {
@@ -131,5 +147,7 @@ namespace UI.Controllers
             return RedirectToAction("Login", "Home");
            
         }
+
+        //Login Logout Section
     }
 }

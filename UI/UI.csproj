@@ -43,6 +43,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CkEditor">
+      <HintPath>C:\Users\kingk\Downloads\CkEditor\CkEditor\CkEditor\bin\CkEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="CKEditor.NET">
+      <HintPath>C:\Users\kingk\Downloads\CkEditor\CkEditor\CkEditor\bin\CKEditor.NET.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -197,6 +203,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminBaseController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -243,6 +250,8 @@
     <Content Include="Views\Admin\allTeacher.cshtml" />
     <Content Include="Views\Admin\addEvents.cshtml" />
     <Content Include="Views\Admin\allEvents.cshtml" />
+    <Content Include="Views\Home\Events.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -254,6 +263,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\Uploaded Images\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\AdminBase\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IntSchl BLL\IntSchl.BLL.csproj">
