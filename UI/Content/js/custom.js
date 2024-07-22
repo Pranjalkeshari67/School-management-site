@@ -217,6 +217,43 @@ function eventFormValidations() {
 }
 
 
+function onClickDelete(e, t) {
+    var x = confirm("Are you sure ?");
+    if (x) {
+        debugger;
+        var ob = { blogId: $(t).data("emid") };
+        console.log(ob);
+        debugger;
+        $.ajax({
+            url: "/Admin/DeleteBlog",
+            method: "post",
+            data: ob,
+            dataType: "json",
+            contentType: "application/json",
+            success: function (data) {
+                if (data == "ok") {
+                    swal("Deleted Successfully !");
+                    setTimeout(function () {
+                        location.reload(true);
+                    }, 1500);
+                } else {
+                    swal("Sorry ! Unable to delete.")
+                }
+            },
+            error: function (error) {
+                swal("Some Error Occurred");
+            }
+        })
+        return true;
+    }
+    else {
+        swal("Make sure to be deleted !");
+        return false;
+    }
+
+}
+
+
 
 
 function OnSubmitPhotoForm(e, t) {

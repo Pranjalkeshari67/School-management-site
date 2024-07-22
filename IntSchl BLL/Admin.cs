@@ -65,12 +65,14 @@ namespace IntSchl_BLL
         {
             AdminRepository repo = new AdminRepository();
             return repo.allEvent();
+
         }
 
         public bool deleteEvent(int id)
         {
             AdminRepository repo = new AdminRepository();
             return repo.deleteEvent(id);
+
         }
 
         public DataSet Login(User_ user)
@@ -86,6 +88,7 @@ namespace IntSchl_BLL
             DataSet ds = adr.GetdropDownList();
             return ds;
         }
+
 
         public bool uploadPhotos(Photos ph)
         {
@@ -140,6 +143,7 @@ namespace IntSchl_BLL
             AdminRepository repo = new AdminRepository();
             return repo.Contact(cnt);
         }
+
 
     }
 }
