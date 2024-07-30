@@ -15,7 +15,7 @@
                 <a href="#"> Add New Post</a>
             </li>
             <li class="page-back">
-                <a href="index.html"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+                <a href="/Admin/"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
             </li>
         </ul>
     </div>
@@ -25,6 +25,20 @@
                 <h4>Add New Post</h4>
                 <p>Science & Technology The Right Way To Start A Short Break Holiday</p>
             </div>
+            
+            @{
+                if (ViewBag.blogmsg == null)
+                {
+
+                }
+                else
+                {
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong> Success ! </strong>  @ViewBag.blogmsg
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                }
+            }
             <div class="bor">
                 <form action="javascript:void(0)" method="post" enctype="multipart/form-data" onsubmit="return OnsubmitEvent(event, this)">
                     <div class="row">
@@ -54,10 +68,10 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <textarea id="Description" class="materialize-textarea" name="Description"></textarea>
-                            <label for="textarea1">
-                            Blog Descriptions:
-                                
-                            </label>
+                            @*<label for="textarea1">
+                                Blog Descriptions:
+
+                            </label>*@
                         </div>
                     </div>
                     <div class="row">
@@ -78,23 +92,18 @@
                                 }
 
                                 @*<option value="" disabled="" selected="">Choose Category</option>
-                                    <option value="1">Educations</option>
-                                    <option value="2">Health</option>
-                                    <option value="3">Sports</option>
-                                    <option value="4">Science</option>
-                                    <option value="5">Others</option>*@
+                            <option value="1">Educations</option>
+                            <option value="2">Health</option>
+                            <option value="3">Sports</option>
+                            <option value="4">Science</option>
+                            <option value="5">Others</option>*@
 
                             </select>
                             <label>Select Category</label>
                         </div>
 
                     </div>
-                    @*<div class="row">
-                            <div class="input-field col s12">
-                                <input id="post-auth" type="text" class="validate">
-                                <label for="post-auth">Author Name</label>
-                            </div>
-                        </div>*@
+                  
                     <div class="row">
                         <div class="input-field col s12">
                             <input type="submit" class="waves-effect waves-light btn-large" value="Submit">
@@ -105,7 +114,13 @@
         </div>
     </div>
 </div>
-
+@*<script src="~/ckeditor/ckeditor5.js"></script>*@
 <script>
-    CKEDITOR.replace('Description');
+    
+
+   
 </script>
+    
+
+
+

@@ -8,7 +8,7 @@
     <div class="sb2-2-2">
         <ul>
             <li>
-                <a href="#"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                <a href="/Admin/index"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
             </li>
             <li class="active-bre">
                 <a href="#"> All Teachers</a>
@@ -25,7 +25,7 @@
                     <th>Teacher Name</th>
                     <th>Photo</th>
                     <th>Subject</th>
-                    <th>Edit</th>
+                    @*<th>Edit</th>*@
                     <th>Delete</th>
                 </tr>
             </thead>
@@ -45,7 +45,7 @@
                                 <a href="@Url.Action("updateTeacher","Admin", new { tid = item.tid })" class="sb2-2-1-edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                             </td>
                             <td>
-                                <a href="@Url.Action("deleteTeacher","Admin", new { tid = item.tid})" class="sb2-2-1-edit"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                <a href="@Url.Action("DeleteTeacher","Admin", new { tid = item.tid})" class="sb2-2-1-edit"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                             </td>
                         </tr>
                     }}

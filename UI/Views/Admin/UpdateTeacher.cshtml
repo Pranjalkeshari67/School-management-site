@@ -1,0 +1,82 @@
+﻿@model List<IntSchl_BOL.Models.Teacher>
+@{
+    ViewBag.Title = "UpdateTeacher";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+
+<div class="sb2-2">
+    <div class="sb2-2-2">
+        <ul>
+            <li>
+                <a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            </li>
+            <li class="active-bre">
+                <a href="#"> Update Teacher</a>
+            </li>
+            <li class="page-back">
+                <a href="/Admin/allTeacher"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+            </li>
+        </ul>
+    </div>
+    <div class="sb2-2-add-blog sb2-2-1">
+        <div class="box-inn-sp">
+            <div class="inn-title">
+                <h4>Update Teacher</h4>
+            </div>
+            <div class="bor">
+                <!-------------Form Strat------------>
+                @{
+                    foreach (var item in Model)
+                    {
+                        <form action="javascript:void(0)" method="post" enctype="multipart/form-data" onsubmit="return OnUpdateTeacherForm(event, this)">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="hidden" value="@item.tid" name="tid" />
+                                    <input id="tName" type="text" value="@item.Name" name="Name">
+                                    <label for="tname">teachers name</label>
+                                </div>
+
+                                <div class="input-field col s12">
+                                    <div class="file-field">
+                                        <div class="btn">
+                                            <span>Teacher's Photo</span>
+                                            <input type="file" name="postedFile">
+                                        </div>
+                                        <div class="file-path-wrapper">
+                                            <input class="file-path validate" type="text" placeholder="Upload Blog Banner" id="timage" name="Photo" value="@item.Photo">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="input-field col s12">
+                                                    <select name="subid" id="tsub">
+                                                        <option value=" " disabled="" selected="">Choose Subject</option>
+                                                        @{
+                                                            foreach (var i in ViewBag.SubList)
+                                                            {
+                                                                <option value="@i.subid" @(i.subid == item.subid ? "selected" : "")>@i.Subject_name</option>
+                                                            }
+                                                        }
+
+                                                    </select>
+                                    <label>Select Category</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="submit" class="waves-effect waves-light btn-large" value="Submit">
+                                </div>
+                            </div>
+                        </form>
+                    }
+                }
+
+                <!-------------Form End-------------->
+            </div>
+        </div>
+    </div>
+</div>
+

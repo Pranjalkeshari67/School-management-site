@@ -4071,3 +4071,20 @@ textarea.form-control{height: 150px !important;}
     object-fit: cover !important;
     object-position: center !important;
 }
+
+.phottoGallery {
+    height: 20rem !important;
+   
+}
+
+.class_img1 img {
+    height: 31rem;
+    width: 50rem;
+    object-fit: cover;
+    margin-bottom: 30px;
+}
+
+.blog_para {
+    text-align: justify;
+    font-size: 1rem;
+}

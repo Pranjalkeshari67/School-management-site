@@ -11,7 +11,7 @@
                 <a href=""><i class="fa fa-home" aria-hidden="true"></i> Home</a>
             </li>
             <li class="active-bre">
-                <a href="#"> All Events</a>
+                <a href="/Admin/index"> All Events</a>
             </li>
         </ul>
     </div>
@@ -25,8 +25,8 @@
                     <th>Event Name</th>
                     <th>Photo</th>
                     <th>Event Date</th>
-                    <th>Delete</th>
-                    <th>Edit</th>
+                    @*<th>Delete</th>
+                    <th>Edit</th>*@
                 </tr>
             </thead>
 
@@ -41,12 +41,12 @@
                             <td>@item.eventName</td>
                             <td><img id="adminTeacherImg" src="@item.eventPhoto" /></td>
                             <td>@item.eventDate</td>
-                            <td>
+                            @*<td>
                                 <a onclick="return onClickDeleteEvent(event, this)" data-emid="@item.eid" class="sb2-2-1-edit"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                             </td>
                             <td>
                                 <a href="@Url.Action("deleteTeacher","Admin", new { eid = item.eid})" class="sb2-2-1-edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                            </td>
+                            </td>*@
                         </tr>
                     }}
 

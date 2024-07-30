@@ -1,8 +1,99 @@
-﻿
+﻿@model List<IntSchl_BOL.Models.blog>
 @{
     ViewBag.Title = "UpdateBlog";
     Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
 }
 
-<h2>UpdateBlog</h2>
+<div class="sb2-2">
+    <div class="sb2-2-2">
+        <ul>
+            <li>
+                <a href="/Admin/index"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            </li>
+            <li class="active-bre">
+                <a href="#"> Update Post</a>
+            </li>
+            <li class="page-back">
+                <a href="/Admin/allBlogs"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+            </li>
+        </ul>
+    </div>
+    <div class="sb2-2-add-blog sb2-2-1">
+        <div class="box-inn-sp">
+            <div class="inn-title">
+                <h4>Update Blog</h4>
+                
+            </div>
+            <div class="bor">
+               
+                <form action="javascript:void(0)" method="post" enctype="multipart/form-data" onsubmit="return OnUpdateBlogEvent(event, this)">
+                    @{
+                        foreach (var item in Model)
+                        {
+                            <div class="row">
+                                
+                                <div class="input-field col s12">
+                                    <input type="hidden" name="id" value="@item.id"/>
+                                    <input id="list-title" type="text" class="validate" name="Heading" value="@item.heading">
+                                    <label for="list-title">Post Name</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <div class="file-field">
+                                        <div class="btn">
+                                            <span>File</span>
+                                            <input type="file" name="postedFile">  <!--The <input type="file"> field does not support setting a value due to security reasons.-->
+                                        </div>
+                                        <div class="file-path-wrapper">
+                                            <input class="file-path validate" type="text" placeholder="Upload Blog Banner" id="image" name="image" value="@item.image">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <textarea id="shortDesc" class="materialize-textarea" name="shortDesc">@item.shortdesc</textarea>
+                                    <label for="textarea1">Short Descriptions:</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <textarea id="Description" class="materialize-textarea" name="Description">@item.description</textarea>
+                                    <label for="textarea1">
+                                        Blog Descriptions:
+                                    </label>
+                                </div>
+                            </div>
+
+
+
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <select name="blogcategory" id="Category">
+
+                                        <option value="" disabled="" selected="">Choose Category</option>
+                                        @{
+                                            foreach (var i in ViewBag.categorylist)
+                                            {
+                                                <option value="@i.catid" @(i.catid == item.blogcategory ? "selected" : "")>@i.categoryname</option>
+                                            }
+                                        }
+
+                                    </select>
+                                    <label>Select Category</label>
+                                </div>
+
+                            </div>
+                        }}
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="submit" class="waves-effect waves-light btn-large" value="Submit">
+                        </div>
+                    </div>
+                </form>
+                    
+            </div>
+        </div>
+    </div>
+</div>
 

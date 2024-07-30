@@ -31,6 +31,8 @@
                                     <h3><a href="@Url.Action("BlogDetails","Home", new { Id = item.id })">@item.heading</a></h3>
                                     <!--Blog Description-->
                                     <p>@item.shortdesc</p>
+                                    
+                                    
                                 </div>
                             </div>
                         </li>
@@ -41,33 +43,27 @@
 
 
             </ul>
-            <div class="blog-pagination text-center"> <a href="#0"><i class="fas fa-angle-left"></i></a> <a href="#0">01</a> <a href="#0" class="active">02</a> <a href="#0">03</a> <a href="#0"><i class="fas fa-angle-right"></i></a> </div>
+            <div class="blog-pagination text-center"> <a href="#0"><i class="fas fa-angle-left"></i></a> <a href="#0"  class="active">01</a> <a href="#0">02</a> <a href="#0">03</a> <a href="#0"><i class="fas fa-angle-right"></i></a> </div>
+        </div>
+
+        <div class="col-lg-4">
+
+            <div class="single-widgets widget_category ">
+                <h4>Categories</h4>
+                <ul class="categories">
+                    @foreach (var item in ViewBag.blogCategory)
+                    {
+                        <li><a href="@Url.Action("BlogsByCategory","Home", new { Id = item.catid })">@item.categoryname (@item.Count)</a></li>
+                    }
+
+
+                </ul>
+            </div>
+
+
+
         </div>
     </div>
 </div>
 <!-- Inner Content end -->
-<!--Newsletter Start-->
-<div class="newsletter-wrap">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="title">
-                    <h1>Newsletter</h1>
-                </div>
-                <p>Lorem ipsum dolor sit amet consectetur.</p>
-            </div>
-            <div class="col-lg-6">
-                <div class="news-info">
-                    <form>
-                        <div class="input-group">
-                            <input type="text" class="form-control" name="search" placeholder="Email Address">
-                            <div class="form_icon"><i class="fas fa-envelope"></i></div>
-                        </div>
-                        <button class="sigup">Sign Up</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!--Newsletter End-->
+

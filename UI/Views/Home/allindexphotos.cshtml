@@ -1,0 +1,47 @@
+﻿@model List<IntSchl_BOL.Models.Photos>
+@{
+    ViewBag.Title = "allindexphotos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="gallery-wrap ">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 d-flex justify-content-center" >
+                <div class="gallery_box">
+                    <div class="gallery_left">
+                        <div class="title">
+                            <h1>Photo Gallery</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="row">
+                    @{
+                        foreach (var item in Model)
+                        {
+                            <div class="col-lg-4 col-md-6">
+                                                    <div class="galleryImg">
+                                                        <!--DYNAMIC-->
+                                                        <img src="@item.Photo" alt="" class="phottoGallery">
+                                                        <div class="teachers-content">
+                                                            
+                                                            <div class="designation mt-2">@item.eventName</div>
+                                                        </div>
+                                                        <div class="portfolio-overley">
+                                                            <div class="content"> <a href="@item.Photo" class="fancybox image-link" data-fancybox="images" title="Image Caption Here"><i class="fas fa-search-plus"></i></a> </div>
+                                                        </div>
+                                                    </div>
+                            </div>
+
+
+                        }
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

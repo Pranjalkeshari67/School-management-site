@@ -43,6 +43,7 @@ namespace UI.Controllers
             return View();
         }
 
+       
         [HttpGet]
         public ActionResult Teachers()
         {
@@ -70,6 +71,22 @@ namespace UI.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public ActionResult Eventphotos(int eid)
+        {
+            Photos ph = new Photos();
+            List<Photos> lst = new List<Photos>();
+            Admin admin = new Admin();
+            lst = admin.Eventphotos(eid);
+           
+            return View(lst);
+        }
+
+        [HttpPost]
+        public ActionResult Eventphotos()
+        {
+            return View();
+        }
 
         //Blog Section Strat
 
@@ -79,6 +96,7 @@ namespace UI.Controllers
             List<blog> lst = new List<blog>();
             Admin admin = new Admin();
             lst = admin.allBlog();
+            ViewBag.blogCategory= admin.blogCategory();
             return View(lst);
         }
         [HttpPost]
@@ -100,6 +118,22 @@ namespace UI.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public ActionResult BlogsByCategory(int id)
+        {
+            List<blog> lst = new List<blog>();
+            Admin admin = new Admin();
+            lst = admin.BlogsByCategory(id);
+            return View(lst);
+        }
+        [HttpPost]
+        public ActionResult BlogsByCategory()
+        {
+            return View();
+        }
+
+
 
         //Blog Section end
 
@@ -125,6 +159,36 @@ namespace UI.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult allindexphotos()
+        {
+            List<Photos> lst = new List<Photos>();
+            Admin admin = new Admin();
+            lst=admin.allPhotos();
+            return View(lst);
+        }
+        [HttpPost]
+        public ActionResult allindexphotos(Photos ph)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult SubmitNewsLetter(NewsLetter n)
+        {
+            Admin admin = new Admin();
+            bool key = admin.NewsLetter(n);
+            if(key)
+            {
+                return Json("ok", JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json("Nok", JsonRequestBehavior.AllowGet);
+            }
+
+        }
+        
 
 
 

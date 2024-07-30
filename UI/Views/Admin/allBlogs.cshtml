@@ -8,7 +8,7 @@
     <div class="sb2-2-2">
         <ul>
             <li>
-                <a href="#"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                <a href="/Admin/index"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
             </li>
             <li class="active-bre">
                 <a href="#"> All Blogs</a>
@@ -25,8 +25,9 @@
                     <th>Title</th>
                     <th>Categories</th>
                     <th>Date</th>
-                    <th>Edit</th>
+
                     <th>Delete</th>
+                    <th>Edit</th>
                 </tr>
             </thead>
 
@@ -45,7 +46,7 @@
                                 <a onclick="return onClickDelete(event, this);" data-emid="@item.id" class="sb2-2-1-edit"><i class=" fa fa-trash-o" aria-hidden="true"></i></a>
                             </td>
                             <td>
-                                <a href="@Url.Action("updateBlog","Admin", new { stID = item.id })" class="sb2-2-1-edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                <a href="@Url.Action("UpdateBlog","Admin", new { bid= item.id })" class="sb2-2-1-edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                             </td>
                         </tr>
                     }}

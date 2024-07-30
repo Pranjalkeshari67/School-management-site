@@ -9,13 +9,13 @@
     <div class="sb2-2-2">
         <ul>
             <li>
-                <a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                <a href="/Admin/Index"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
             </li>
             <li class="active-bre">
                 <a href="#"> Add New Teacher</a>
             </li>
             <li class="page-back">
-                <a href="index.html"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+                <a href="/Admin/allTeacher"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
             </li>
         </ul>
     </div>
@@ -24,6 +24,20 @@
             <div class="inn-title">
                 <h4>Add New Teacher</h4>
             </div>
+
+            @{
+                if (ViewBag.blogmsg == null)
+                {
+
+                }
+                else
+                {
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong> Success ! </strong>  @ViewBag.Teachermsg
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+            }
             <div class="bor">
                 <!-------------Form Strat------------>
                 <form action="javascript:void(0)" method="post" enctype="multipart/form-data" onsubmit="return OnSubmitTeacherForm(event, this)">
@@ -70,7 +84,7 @@
                         </div>
                     </div>
                 </form>
-        <!-------------Form End-------------->
+                <!-------------Form End-------------->
             </div>
         </div>
     </div>

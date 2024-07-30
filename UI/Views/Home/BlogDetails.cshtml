@@ -21,97 +21,22 @@
                         foreach(var item in Model) {
 
                         <div class="class_left">
-                            <div class="class_Img">
-                                @*Blog Image*@
+                            <div class="class_img1">
+                                
                                 <img src="@item.image" alt="">
                                 <div class="time_box"><span>Posted on:@item.postdate </span></div>
                             </div>
-                            @*Blog Heading*@
+                            
                             <h3>@item.heading</h3>
-                            @*Blog Description*@
-                            <p>
+                           
+                            <p class="blog_para">
                                 @item.description;
                             </p>
                         </div>
                         }
                     }
                 </div>
-                <div class="col-lg-4">
-                    <div class="single-widgets widget_search ">
-                        <h4>Search</h4>
-                        <form action="#" class="sidebar-search-form">
-                            <input type="search" name="search" placeholder="Search..">
-                            <button type="submit"><i class="fas fa-search"></i></button>
-                        </form>
-                    </div>
-                    <div class="single-widgets widget_category ">
-                        <h4>Categories</h4>
-                        <ul class="categories">
-                            <li><a href="#">Educations (6)</a></li>
-                            <li><a href="#">Childs (12)</a></li>
-                            <li><a href="#">Design (4)</a></li>
-                            <li><a href="#">Lifestyle (2)</a></li>
-                            <li><a href="#">Daily Meals (8)</a></li>
-                            <li><a href="#">Teachers (9)</a></li>
-                            <li><a href="#">Uncategorized (2)</a></li>
-                        </ul>
-                    </div>
-                    <div class="single-widgets widget_category ">
-                        <h4>Recents Classes</h4>
-                        <ul class="property_sec ">
-                            <li>
-                                <div class="rec_proprty">
-                                    <div class="propertyImg"><img src="images/gallery-1.jpg"></div>
-                                    <div class="property_info">
-                                        <h4><a href="#">English Classroom</a></h4>
-                                        <p>Lorem ipsum dolor sit amet, adipiscing elit.</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="rec_proprty">
-                                    <div class="propertyImg"><img src="images/gallery-2.jpg"></div>
-                                    <div class="property_info">
-                                        <h4><a href="#">English Classroom</a></h4>
-                                        <p>Lorem ipsum dolor sit amet, adipiscing elit.</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="rec_proprty">
-                                    <div class="propertyImg"><img src="images/gallery-3.jpg"></div>
-                                    <div class="property_info">
-                                        <h4><a href="#">English Classroom</a></h4>
-                                        <p>Lorem ipsum dolor sit amet, adipiscing elit.</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="single-widgets widget_category ">
-                        <h4>Archives</h4>
-                        <ul class="categories">
-                            <li><a href="#">May 2020 </a></li>
-                            <li><a href="#">February 2019 </a></li>
-                            <li><a href="#">August 2018 </a></li>
-                        </ul>
-                    </div>
-                    <div class="single-widgets ">
-                        <h4>Tags</h4>
-                        <ul class="tags">
-                            <li><a href="#">School</a></li>
-                            <li><a href="#">Study</a></li>
-                            <li><a href="#">English</a></li>
-                            <li><a href="#">Parents</a></li>
-                            <li><a href="#">Sports</a></li>
-                            <li><a href="#">News</a></li>
-                            <li><a href="#">Teachers</a></li>
-                            <li><a href="#">Art</a></li>
-                            <li><a href="#">Meetings</a></li>
-                            <li><a href="#">Design</a></li>
-                        </ul>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>

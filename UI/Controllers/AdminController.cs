@@ -56,7 +56,14 @@ namespace UI.Controllers
             }
             Admin admin = new Admin();
             bool key = admin.addBlog(blg);
-
+            if (key)
+            {
+                ViewBag.blogmsg = " Submitted Successfully";
+            }
+            else
+            {
+                ViewBag.blogmsg= "Something Went Wrong";
+            }
             return View();
         }
 
@@ -88,14 +95,42 @@ namespace UI.Controllers
             }
         }
 
-        public ActionResult UpdateBlog(int id)
+        [HttpGet]       
+        public ActionResult UpdateBlog(int bid)
         {
-            return View();
+           
+            List<blog> lst = new List<blog>();
+            blog bg = new blog();
+            Admin admin = new Admin();
+            ViewBag.categorylist = admin.CategoryList();
+            lst =admin.BindSingleBlogAdmin(bid);
+            
+            return View(lst);
         }
-
-        public ActionResult UpdateBlog(blog user)
+        [HttpPost]
+        public ActionResult UpdateBlog(blog blg, HttpPostedFileBase postedFile)
         {
-            return View();
+            if (postedFile != null)
+            {
+                
+               
+                    blg.image = "/Content/Uploaded Images/" + Guid.NewGuid() + Path.GetExtension(postedFile.FileName);
+                    postedFile.SaveAs(Path.Combine(Server.MapPath(blg.image)));
+                
+                
+            }
+
+            Admin admin = new Admin();
+            bool key = admin.UpdateBlog(blg);
+            if(key)
+            {
+                ViewBag.Updatemsg = "Updated Sucessfully";
+            }
+            else
+            {
+                ViewBag.Updatemsg = "Something Went Wrong";
+            }
+            return RedirectToAction("allBlogs","Admin");
         }
         //Blogs Section End
 
@@ -119,7 +154,14 @@ namespace UI.Controllers
             }
             Admin admin = new Admin();
             bool key = admin.addTeacher(tech);
-
+            if (key)
+            {
+                ViewBag.Teachermsg = " Submitted Successfully";
+            }
+            else
+            {
+                ViewBag.Teachermsg = "Something Went Wrong";
+            }
             return View();
         }
 
@@ -137,14 +179,43 @@ namespace UI.Controllers
             return View();
         }
 
-        public ActionResult DeleteTeacher()
+        public ActionResult DeleteTeacher(int tid)
         {
-            return View();
+            Admin admin = new Admin();
+            admin.deleteTeacher(tid);
+            return RedirectToAction("allTeacher", "Admin");
         }
 
-        public ActionResult UpdateTeacher()
+        [HttpGet]
+        public ActionResult UpdateTeacher(int tid)
         {
-            return View();
+            List<Teacher> lst = new List<Teacher>();
+            Admin admin = new Admin();
+            ViewBag.SubList = admin.Sublist();
+            lst = admin.SingleTeacher(tid);
+            return View(lst);
+        }
+        [HttpPost]
+        public ActionResult UpdateTeacher(Teacher tech,HttpPostedFileBase postedFile)
+        {
+            if (postedFile != null)
+            {
+                tech.Photo = "/Content/Uploaded Images/" + Guid.NewGuid() + Path.GetExtension(postedFile.FileName);
+                postedFile.SaveAs(Path.Combine(Server.MapPath(tech.Photo)));
+            }
+            Admin admin = new Admin();
+            bool key=admin.UpdateTeacher(tech);
+
+            if (key)
+            {
+                ViewBag.UpdateTechmsg = "Updated Sucessfully";
+            }
+            else
+            {
+                ViewBag.UpdateTechmsg = "Something Went Wrong";
+            }
+            return RedirectToAction("allTeacher", "Admin");
+            
         }
 
 
@@ -165,6 +236,14 @@ namespace UI.Controllers
             }
             Admin admin = new Admin();
             bool key = admin.addEvent(ev);
+            if (key)
+            {
+                ViewBag.eventmsg = " Submitted Successfully";
+            }
+            else
+            {
+                ViewBag.eventmsg = "Something Went Wrong";
+            }
             return View();
         }
         [HttpGet]
@@ -199,9 +278,13 @@ namespace UI.Controllers
         {
             return View();
         }
+
+        //Photos Start
         [HttpGet]
         public ActionResult uploadPhotos()
         {
+            Admin admin = new Admin();
+            ViewBag.allEvents = admin.allEvent();
             return View();
         }
 
@@ -260,7 +343,67 @@ namespace UI.Controllers
                 return Json("nok", JsonRequestBehavior.AllowGet);
             }
         }
-       
+
+        //Photos Start
+
+        //Contact Us
+        [HttpGet]
+        public ActionResult Contact()
+        {
+            List<Contact> lst = new List<Contact>();
+            Admin admin = new Admin();
+            lst = admin.adminContact();
+            return View(lst);
+        }
+        [HttpPost]
+        public ActionResult Contact(Contact ct)
+        {
+
+            return View();
+        }
+
+        public JsonResult DeleteContact(int ctid)
+        {
+            Admin admin = new Admin();
+            bool key = admin.DeleteContact(ctid);
+            if(key)
+            {
+                return Json("ok", JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json("nok", JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult showNewsLetter(NewsLetter n)
+        {
+            List<NewsLetter> lst = new List<NewsLetter>();
+            Admin admin = new Admin();
+            lst = admin.showNewsLetter();
+            return View(lst);
+        }
+
+        [HttpPost]
+        public ActionResult NewsLetter()
+        {
+            return View();
+        }
+
+        public JsonResult DeleteNewsletter(int nid)
+        {
+            Admin admin = new Admin();
+            bool key = admin.DeleteNewsletter(nid);
+            if (key)
+            {
+                return Json("ok", JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json("nok", JsonRequestBehavior.AllowGet);
+            }
+        }
 
     }
 }

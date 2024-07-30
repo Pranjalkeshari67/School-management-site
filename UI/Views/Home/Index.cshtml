@@ -21,33 +21,17 @@
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nibh dolor, gravida faucibus dolor consectetur, <br>
                             pulvinar rhoncus risus. Fusce vel rutrum mi. Suspendisse pretium tellus eu ipsum.
                         </div>
-                        <div class="caption lfb large-title tp-resizeme slidertext4" data-x="330" data-y="350" data-speed="600" data-start="2800"> <a href="#"><i class="fas fa-edit"></i> Enroll Today</a> </div>
-                        <div class="caption lfb large-title tp-resizeme slidertext4 slidertext5" data-x="610" data-y="350" data-speed="600" data-start="3400"> <a href="#"><i class="far fa-calendar-alt"></i> Schedule a Tour</a> </div>
+                        
+                            <div class="caption lfb large-title tp-resizeme slidertext4 " data-x="330" data-y="350" data-speed="600" data-start="2800"> <a href="/Home/Contact"><i class="fas fa-edit"></i> Enroll Today</a> </div>
+                        
+                        
+                        @*<div class="caption lfb large-title tp-resizeme slidertext4 slidertext5" data-x="610" data-y="350" data-speed="600" data-start="3400"> <a href="#"><i class="far fa-calendar-alt"></i> Schedule a Tour</a> </div>*@
                     </li>
 
                 }
             }
 
-            @*<li data-slotamount="7" data-transition="slotzoom-horizontal" data-masterspeed="1000" data-saveperformance="on">
-                <img alt="" src="~/Content/images/dummy.png" data-lazyload="/Content/images/blog1.jpg">
-                <div class="caption lft large-title tp-resizeme slidertext2" data-x="center" data-y="170" data-speed="600" data-start="1600"><span> International School </span></div>
-                <div class="caption lfb large-title tp-resizeme slidertext3" data-x="center" data-y="260" data-speed="600" data-start="2200">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nibh dolor, gravida faucibus dolor consectetur, <br>
-                    pulvinar rhoncus risus. Fusce vel rutrum mi. Suspendisse pretium tellus eu ipsum.
-                </div>
-                <div class="caption lfb large-title tp-resizeme slidertext4" data-x="330" data-y="350" data-speed="600" data-start="2800"> <a href="#"><i class="fas fa-edit"></i> Enroll Today</a> </div>
-                <div class="caption lfb large-title tp-resizeme slidertext4 slidertext5" data-x="610" data-y="350" data-speed="600" data-start="3400"> <a href="#"><i class="far fa-calendar-alt"></i> Schedule a Tour</a> </div>
-            </li>
-            <li data-slotamount="7" data-transition="slotzoom-horizontal" data-masterspeed="1000" data-saveperformance="on">
-                <img alt="" src="~/Content/images/dummy.png" data-lazyload="/Content/images/blog3.jpg">
-                <div class="caption lft large-title tp-resizeme slidertext2" data-x="center" data-y="170" data-speed="600" data-start="1600"><span> International School </span></div>
-                <div class="caption lfb large-title tp-resizeme slidertext3" data-x="center" data-y="260" data-speed="600" data-start="2200">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nibh dolor, gravida faucibus dolor consectetur, <br>
-                    pulvinar rhoncus risus. Fusce vel rutrum mi. Suspendisse pretium tellus eu ipsum.
-                </div>
-                <div class="caption lfb large-title tp-resizeme slidertext4" data-x="330" data-y="350" data-speed="600" data-start="2800"> <a href="#"><i class="fas fa-edit"></i> Enroll Today</a> </div>
-                <div class="caption lfb large-title tp-resizeme slidertext4 slidertext5" data-x="610" data-y="350" data-speed="600" data-start="3400"> <a href="#"><i class="far fa-calendar-alt"></i> Schedule a Tour</a> </div>
-            </li>*@
+            
         </ul>
     </div>
 </div>
@@ -183,7 +167,7 @@
                                 <div class="time_box"><span>@i.eventDate</span></div> <!--DYNAMIC-->
                             </div>
                             <div class="path_box">
-                                <h3><a href="#">@i.eventName</a></h3>  <!--DYNAMIC-->
+                                <h3><a href="@Url.Action("Eventphotos","Home", new { eid = i.eid })">@i.eventName</a></h3>  <!--DYNAMIC-->
                             </div>
                         </div>
                     </li>
@@ -204,7 +188,7 @@
             <h1>We Are The Best <span>Choice For Your Child</span></h1>
         </div>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at eleifend est. Donec dictum at diam ut finibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam diam magna, condimentum in nibh sed, mattis fermentum diam.</p>
-        <div class="readmore"><a href="#">Contact Us</a></div>
+        <div class="readmore"><a href="/Home/Contact">Contact Us</a></div>
     </div>
 </div>
 <!-- Choice End -->
@@ -233,7 +217,7 @@
                             <h1>Photo Gallery</h1>
                         </div>
                         <p>Lorem ipsum dolor sit amet, adipiscing elit. Vivamus nibh dolor, gravida faucibus dolor consectetur.</p>
-                        <div class="readmore"><a href="#">View All Gallery</a></div>
+                        <div class="readmore"><a href="/Home/allindexphotos">View All Gallery</a></div>
                     </div>
                 </div>
             </div>
@@ -411,7 +395,7 @@
                                 <div class="time_box"><span>@item.postdate</span></div>
                             </div>
                             <div class="path_box">
-                                <h3><a href="#">@item.heading</a></h3>
+                                <h3><a href="@Url.Action("BlogDetails","Home", new { Id = item.id })">@item.heading</a></h3>
                                 <p>@item.shortdesc</p>
                             </div>
                         </div>
@@ -436,12 +420,12 @@
             </div>
             <div class="col-lg-6">
                 <div class="news-info">
-                    <form>
+                    <form action="javascript:void(0)" method="post" enctype="multipart/form-data" onsubmit="return OnSubmitNewsletterForm(event, this)">
                         <div class="input-group">
-                            <input type="text" class="form-control" name="search" placeholder="Email Address">
+                            <input type="text" class="form-control" name="newsEmail"  id="newsEmail" placeholder="Email Address">
                             <div class="form_icon"><i class="fas fa-envelope"></i></div>
                         </div>
-                        <button class="sigup">Sign Up</button>
+                        <button type="submit" class="sigup">Sign Up</button>
                     </form>
                 </div>
             </div>

@@ -8,13 +8,13 @@
     <div class="sb2-2-2">
         <ul>
             <li>
-                <a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                <a href="/Admin/Index"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
             </li>
             <li class="active-bre">
                 <a href="#"> Add New Event</a>
             </li>
             <li class="page-back">
-                <a href="index.html"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+                <a href="/Admin/allBlogs"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
             </li>
         </ul>
     </div>
@@ -22,8 +22,22 @@
         <div class="box-inn-sp">
             <div class="inn-title">
                 <h4>Add New Event</h4>
-               
+
             </div>
+
+            @{
+                if (ViewBag.blogmsg == null)
+                {
+
+                }
+                else
+                {
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong> Success ! </strong>  @ViewBag.eventmsg
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+            }
             <div class="bor">
                 <form action="javascript:void(0)" method="post" enctype="multipart/form-data" onsubmit="return OnSubmitEventForm(event, this)">
                     <div class="row">

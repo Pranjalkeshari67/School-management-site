@@ -11,26 +11,37 @@ using System.Data;
 
 namespace IntSchl_BLL
 {
-   public class Admin
-   {
-        //public int Id { get; set; }
-        //public string eventName { get; set; }
-        //public string eventPhoto { get; set; }
-        //public string eventDate { get; set; }
-        //public List<Event> lstAllEvents { get; set; }
+    public class Admin
+    {
+
 
         public bool addBlog(blog blg)
-     {
+        {
             AdminRepository repo = new AdminRepository();
             return repo.insertBlog(blg);
-     }
+        }
 
         public List<blog> allBlog()
         {
             AdminRepository repo = new AdminRepository();
             return repo.allBlogs();
         }
+        public List<blog> blogCategory()
+        {
+            AdminRepository repo = new AdminRepository();
+            return repo.Blogcategory();
+        }
 
+        public List<blog> BlogsByCategory(int id)
+        {
+            AdminRepository repo = new AdminRepository();
+            return repo.BlogsByCategory(id);
+        }
+        public List<blog> BindSingleBlogAdmin(int id)
+        {
+            AdminRepository repo = new AdminRepository();
+            return repo.bindSingleBlogAdmin(id);
+        }
         public List<blog> bindSingleBlog(int Id)
         {
             AdminRepository repo = new AdminRepository();
@@ -41,6 +52,18 @@ namespace IntSchl_BLL
         {
             AdminRepository repo = new AdminRepository();
             return repo.deleteBlog(id);
+        }
+
+        public bool UpdateBlog(blog blg)
+        {
+            AdminRepository repo = new AdminRepository();
+            return repo.UpdateBlog(blg);
+        }
+
+        public List<blog> CategoryList()
+        {
+            AdminRepository repo = new AdminRepository();
+            return repo.CategoryList();
         }
 
         public bool addTeacher(Teacher tech)
@@ -54,6 +77,27 @@ namespace IntSchl_BLL
             AdminRepository repo = new AdminRepository();
             return repo.allTeacher();
         }
+
+        public List<Teacher> Sublist()
+        {
+            AdminRepository repo = new AdminRepository();
+            return repo.Sublist();
+        }
+
+        public List<Teacher> SingleTeacher(int tid)
+        {
+            AdminRepository repo = new AdminRepository();
+            return repo.SingleTeacher(tid);
+        }
+
+        public bool UpdateTeacher(Teacher tech)
+        {
+            AdminRepository repo = new AdminRepository();
+            return repo.UpdateTeacher(tech);
+        }
+
+
+
 
         public bool addEvent(Event ev)
         {
@@ -102,7 +146,7 @@ namespace IntSchl_BLL
             return repo.allPhotos();
         }
 
-        public bool deletePhoto(int pid )
+        public bool deletePhoto(int pid)
         {
             AdminRepository repo = new AdminRepository();
             return repo.deletePhotos(pid);
@@ -131,7 +175,11 @@ namespace IntSchl_BLL
             AdminRepository repo = new AdminRepository();
             return repo.indexTeachers();
         }
-
+        public bool deleteTeacher(int tid)
+        {
+            AdminRepository repo = new AdminRepository();
+            return repo.deleteteacher(tid);
+        }
         public List<blog> indexBlog()
         {
             AdminRepository repo = new AdminRepository();
@@ -142,6 +190,42 @@ namespace IntSchl_BLL
         {
             AdminRepository repo = new AdminRepository();
             return repo.Contact(cnt);
+        }
+
+        public List<Contact> adminContact()
+        {
+            AdminRepository repo = new AdminRepository();
+            return repo.adminContact();
+        }
+
+        public bool DeleteContact(int id)
+        {
+            AdminRepository repo = new AdminRepository();
+            return repo.deleteContact(id);
+        }
+
+        public List<Photos> Eventphotos(int eid)
+        {
+            AdminRepository repo = new AdminRepository();
+            return repo.Eventphotos(eid);
+        }
+
+        public bool NewsLetter(NewsLetter n)
+            {
+            AdminRepository repo = new AdminRepository();
+            return repo.NewsLetter(n); 
+            }
+
+        public List<NewsLetter> showNewsLetter()
+        {
+            AdminRepository repo = new AdminRepository();
+            return repo.showNewsLetter();
+        }
+
+        public bool DeleteNewsletter(int id)
+        {
+            AdminRepository repo = new AdminRepository();
+            return repo.DeleteNewsletter(id);
         }
 
 

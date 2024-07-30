@@ -71,6 +71,21 @@
                     <div class="contact-info login_box">
                         <div class="contact-form loginWrp registerWrp">
                             <form action="javascript:void(0)" method="post" enctype="multipart/form-data" onsubmit="return OnSubmitContactForm(event, this)">
+
+                                @{
+                                    if (ViewBag.Contactmsg == null)
+                                    {
+
+                                    }
+                                    else
+                                    {
+                                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                            <strong> Success ! </strong>  @ViewBag.Contactmsg
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        </div>
+                                    }
+                                }
+
                                 <h3>Get In Touch</h3>
                                 <div class="row">
                                     <div class="col-lg-12">
@@ -78,7 +93,7 @@
                                             <input type="text" name="name" id="cname" class="form-control" placeholder="First Name">
                                         </div>
                                     </div>
-                                   
+
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <input type="email" name="email" id="cemail" class="form-control" placeholder="Email Address">
@@ -86,7 +101,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <input type="email" name="phone" id="cphone" class="form-control" placeholder="Phone">
+                                            <input type="text" name="phone" id="cphone" class="form-control" placeholder="Phone">
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
@@ -108,35 +123,11 @@
             </div>
             <div class="col-lg-5">
                 <div class="map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021674.414950062!2d41.11423519392498!3d42.30298232333148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40440cd7e64f626b%3A0x4f907964122d4ac2!2sGeorgia!5e0!3m2!1sen!2s!4v1545313690667" width="100%" height="511" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d227821.98710530254!2d80.77769949830774!3d26.848902829067065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bfd991f32b16b%3A0x93ccba8909978be7!2sLucknow%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1721973528124!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <!-- Inner Content Start -->
-<!--Newsletter Start-->
-<div class="newsletter-wrap ">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="title">
-                    <h1>Newsletter</h1>
-                </div>
-                <p>Lorem ipsum dolor sit amet consectetur.</p>
-            </div>
-            <div class="col-lg-6">
-                <div class="news-info">
-                    <form>
-                        <div class="input-group">
-                            <input type="text" class="form-control" name="search" placeholder="Email Address">
-                            <div class="form_icon"><i class="fas fa-envelope"></i></div>
-                        </div>
-                        <button class="sigup">Sign Up</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!--Newsletter End-->
+

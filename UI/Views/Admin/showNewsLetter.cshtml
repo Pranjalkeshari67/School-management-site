@@ -1,0 +1,58 @@
+﻿@model List<IntSchl_BOL.Models.NewsLetter>
+@{
+    ViewBag.Title = "showNewsLetter";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+
+
+<div class="sb2-2">
+    <div class="sb2-2-2">
+        <ul>
+            <li>
+                <a href="/Admin/Index"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            </li>
+            <li class="active-bre">
+                <a href="/Admin/showNewsLetter"> Newsletters</a>
+            </li>
+        </ul>
+    </div>
+    <div class="sb2-2-1">
+        <h2>All Emails</h2>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                   
+                    <th>Email</th>
+                   
+                    <th>Delete</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @{
+                    int count = 0;
+                    foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td>@count</td>
+                            
+                            <td>@item.newsEmail</td>
+                           
+
+                            <td>
+                                <a onclick="return onClickNewsletterDelete(event, this);" data-emid="@item.id" class="sb2-2-1-edit"><i class=" fa fa-trash-o" aria-hidden="true"></i></a>
+                            </td>
+                            @*<td>
+                                    <a onclick="return onClickContactDelete(event, this);" data-emid="@item.id" class="sb2-2-1-edit"><i class=" fa fa-trash-o" aria-hidden="true"></i></a>
+                                </td>*@
+                        </tr>
+                    }}
+
+            </tbody>
+        </table>
+    </div>
+</div>
+

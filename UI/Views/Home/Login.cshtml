@@ -18,13 +18,10 @@
         <!-- Logn Start -->
         <div class="login-wrap ">
             <div class="contact-info login_box">
-                @*<h3>New Customers</h3>
-                <p>If you don't have an account, please proceed by clicking the following button to continue first-time registration.</p>*@
-                <div class="form-group">
-                    <button type="submit" class="default-btn btn send_btn">Create Account <span></span></button>
-                </div>
+              
+                
                 <div class="contact-form loginWrp">
-                    <h3>Login Customers</h3>
+                    <h3>Login Admin</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                     <form action="javascript:void(0)" method="post" enctype="multipart/form-data" onsubmit="return OnsubmitLoginForm(event, this)">
                         
@@ -43,9 +40,7 @@
                                 <div class="form-group">
                                     <button type="submit" class="default-btn btn send_btn"> Log in to my account <span></span></button>
                                 </div>
-                                <div class="form-group">
-                                    <div class="forgot_password"><a href="#">Reset My Password</a></div>
-                                </div>
+                                
                             </div>
                         </div>
                     </form>
@@ -57,38 +52,14 @@
     </div>
 </div>
 <!-- Inner Content Start -->
-<!--Newsletter Start-->
-<div class="newsletter-wrap ">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="title">
-                    <h1>Newsletter</h1>
-                </div>
-                <p>Lorem ipsum dolor sit amet consectetur.</p>
-            </div>
-            <div class="col-lg-6">
-                <div class="news-info">
-                    <form>
-                        <div class="input-group">
-                            <input type="text" class="form-control" name="search" placeholder="Email Address">
-                            <div class="form_icon"><i class="fas fa-envelope"></i></div>
-                        </div>
-                        <button class="sigup">Sign Up</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!--Newsletter End-->
+
 
 
 
 <script>
     function OnsubmitLoginForm(e, t) {
         $(".error").remove();
-        if (!validations()) {
+        if (!loginvalidations()) {
             console.log("Not Submitted");
             return false;
         }
@@ -98,7 +69,7 @@
         }
     }
 
-    function validations() {
+    function loginvalidations() {
         //debugger;
         var Username = $("#username").val();
         var Password = $("#password").val();

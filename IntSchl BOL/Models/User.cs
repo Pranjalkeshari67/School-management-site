@@ -27,9 +27,11 @@ namespace IntSchl_BOL.Models
         public string heading { get; set; }
         public int blogcategory { get; set; }
         public string categoryname { get; set; }
+        public int catid { get; set; }
         public string shortdesc { get; set; }
         public string description { get; set; }
         public string postdate { get; set; }
+        public string Count { get; set; }
     }
 
 
@@ -68,11 +70,14 @@ namespace IntSchl_BOL.Models
         public string cmessage { get; set; }
     }
 
-    public class Lists
+    public class NewsLetter
     {
-        public List<Event> ListEvent { get; set; }
+        public int id { get; set; }
+        public string newsEmail { get; set; }
     }
 
+
+     
 
 
 }

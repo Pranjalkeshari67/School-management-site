@@ -1,0 +1,64 @@
+﻿@model List<IntSchl_BOL.Models.blog>
+@{
+    ViewBag.Title = "BlogsByCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Inner Heading Start -->
+<div class="innerHeading-wrap">
+    <div class="container">
+        @{int count = 0;
+            
+            
+                foreach (var item in Model)
+                {
+                if (count == 0) { 
+                    <h1>@item.categoryname</h1>
+                    count = 1;
+                }
+            }
+
+
+        }
+
+    </div>
+</div>
+<!-- Inner Heading End -->
+<!-- Inner Content Start -->
+<div class="innerContent-wrap">
+    <div class="container">
+        <div class="blog_inner ">
+            <ul class="row unorderList">
+                <!--Blog Card-->
+                @{
+                    foreach (var item in Model)
+                    {
+                        <li class="col-lg-4 col-md-6">
+                            <div class="blog_box">
+                                <div class="blogImg">
+                                    <img src="@item.image" alt="" id="blog_img">
+                                    <div class="time_box"><span>Posted on:@item.postdate </span></div>
+                                </div>
+                                <div class="path_box">
+                                    <!--Blog Heading-->
+                                    <h3><a href="@Url.Action("BlogDetails","Home", new { Id = item.id })">@item.heading</a></h3>
+                                    <!--Blog Description-->
+                                    <p>@item.shortdesc</p>
+
+
+                                </div>
+                            </div>
+                        </li>
+                    }
+                }
+
+
+
+
+            </ul>
+            <div class="blog-pagination text-center"> <a href="#0"><i class="fas fa-angle-left"></i></a> <a href="#0" class="active">01</a> <a href="#0">02</a> <a href="#0">03</a> <a href="#0"><i class="fas fa-angle-right"></i></a> </div>
+        </div>
+       
+    </div>
+</div>
+<!-- Inner Content end -->

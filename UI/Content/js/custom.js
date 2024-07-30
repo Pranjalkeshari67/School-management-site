@@ -1,4 +1,5 @@
-﻿function OnsubmitEvent(e, t) {
+﻿//Blog
+function OnsubmitEvent(e, t) {
     $(".error").remove();
     if (!validations()) {
         console.log("Not Submitted");
@@ -9,20 +10,7 @@
         $(t).attr("action", "/Admin/addBlog");
     }
 }
-//Regular Expression function Starts
 
-//function IsEmail(email) {
-//    const regex =
-//        /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-//    if (!regex.test(email)) {
-//        return false;
-//    }
-//    else {
-//        return true;
-//    }
-//}
-
-//Regular Expression for function end
 
 
 
@@ -96,6 +84,75 @@ function validations() {
 }
 //------------------------------------------------------------
 
+function OnUpdateBlogEvent(e, t) {
+    $(".error").remove();
+    if (!Updateblogvalidations()) {
+        console.log("Not Submitted");
+        return false;
+    }
+    else {
+        console.log("Form Submited");
+        $(t).attr("action", "/Admin/UpdateBlog");
+    }
+}
+
+function Updateblogvalidations() {
+    //debugger;
+    var Heading = $("#list-title").val();
+    var image = $("#image").val();
+    var shortDesc = $("#shortDesc").val();
+    var Description = $("#Description").val();
+    var category = $("Category").val();
+    var check = 0;
+
+    if (Heading == '') {
+        $('#list-title').after('<span class="error">This field is required</span>');
+        check = 1;
+        //debugger;
+    }
+
+    if (image == '') {
+        $('#image').after('<span class="error">This field is required</span>');
+        check = 1;
+        //debugger;
+    }
+
+    if (shortDesc == "") {
+
+        $('#shortDesc').after('<span class="error">This field is is required</span>');
+        check = 1;
+        //debugger;
+    }
+    else if (shortDesc.length > 200) {
+        $('#shortDesc').after('<span class="error">Short Dscription must be less than 200 words</span>');
+        check = 1;
+        //debugger;
+    }
+
+    if (Description == '') {
+        $('#Description').after('<span class="error">This field is required</span>');
+        check = 1;
+        //debugger;
+    }
+
+    if (category == '') {
+        $('#list-title').after('<span class="error">This field is required</span>');
+        check = 1;
+        //debugger;
+    }
+    //if 1 not submit the form, if 0 form will submit
+    if (check == 1) {
+        //debugger;
+        console.log("I am Checked, False 1");
+        return false;
+    }
+    else {
+        //debugger;
+        console.log("I am Checked, True 0");
+        return true;
+    }
+
+}
 
 //Teacher Validation
 function OnSubmitTeacherForm(e, t)
@@ -116,12 +173,12 @@ function OnSubmitTeacherForm(e, t)
 
 function TeacherFormValidations() {
     //debugger;
-    debugger;
+    //debugger;
     var Name = $("#tName").val();
     var image = $("#timage").val();
     var subject = $("#tsub").val();
     var check = 0;
-    debugger;
+    //debugger;
     console.log(Name);
 
     if (Name == '') {
@@ -156,6 +213,65 @@ function TeacherFormValidations() {
     }
 }
 
+function OnUpdateTeacherForm(e, t) {
+    console.log("called");
+    console.log("called");
+    $(".error").remove();
+    if (!TeacherUpdateFormValidations()) {
+        console.log("Not Submitted");
+        return false;
+    }
+    else {
+        console.log("Form Submited");
+        $(t).attr("action", "/Admin/UpdateTeacher");
+        /* alert("Form Submitted");*/
+    }
+}
+
+function TeacherUpdateFormValidations() {
+    //debugger;
+    //debugger;
+    var Name = $("#tName").val();
+    var image = $("#timage").val();
+    var subject = $("#tsub").val();
+    var check = 0;
+    //debugger;
+    console.log(Name);
+
+    if (Name == '') {
+        $('#tName').after('<span class="error">This field is required</span>');
+        check = 1;
+        //debugger;
+    }
+
+    if (image == '') {
+        $('#timage').after('<span class="error">This field is required</span>');
+        check = 1;
+        //debugger;
+    }
+
+    if (subject == '' || subject == null) {
+        $('#tsub').after('<span class="error">This field is required</span>');
+        check = 1;
+        //debugger;
+    }
+
+
+    //if 1 not submit the form, if 0 form will submit
+    if (check == 1) {
+        //debugger;
+        console.log("I am Checked, False 1");
+        return false;
+    }
+    else {
+        //debugger;
+        console.log("I am Checked, True 0");
+        return true;
+    }
+}
+
+
+
 //event validation
 function OnSubmitEventForm(e, t) {
     console.log("called");
@@ -176,12 +292,12 @@ function OnSubmitEventForm(e, t) {
 
 function eventFormValidations() {
     //debugger;
-    debugger;
+    //debugger;
     var Name = $("#ename").val();
     var image = $("#ephoto").val();
     var date = $("#edate").val();
     var check = 0;
-    debugger;
+    //debugger;
     console.log(Name);
 
     if (Name == '') {
@@ -220,10 +336,10 @@ function eventFormValidations() {
 function onClickDelete(e, t) {
     var x = confirm("Are you sure ?");
     if (x) {
-        debugger;
+        //debugger;
         var ob = { blogId: $(t).data("emid") };
         console.log(ob);
-        debugger;
+        //debugger;
         $.ajax({
             url: "/Admin/DeleteBlog",
             method: "post",
@@ -255,9 +371,9 @@ function onClickDelete(e, t) {
 
 
 
-
+//Photo
 function OnSubmitPhotoForm(e, t) {
-    debugger;
+    //debugger;
     console.log("called");
     console.log("called");
     $(".error").remove();
@@ -274,7 +390,7 @@ function OnSubmitPhotoForm(e, t) {
 
 function PhotoFormValidations() {
     //debugger;
-    debugger;
+    //debugger;
   
     var images = $("#eMulPhoto").val();
     var category = $("#ecat").val();
@@ -308,10 +424,11 @@ function PhotoFormValidations() {
         return true;
     }
 }
+//photo End
 
-
+//Contact Start
 function OnSubmitContactForm(e, t) {
-    debugger;
+    //debugger;
     console.log("called");
     console.log("called");
     $(".error").remove();
@@ -320,15 +437,16 @@ function OnSubmitContactForm(e, t) {
         return false;
     }
     else {
+        //debugger;
         console.log("Form Submited");
         $(t).attr("action", "/Home/Contact");
-        /* alert("Form Submitted");*/
+        
     }
 }
 
 function ContactFormValidations() {
     //debugger;
-    debugger;
+    //debugger;
 
     var Name = $("#cname").val();
     var Email = $("#cemail").val();
@@ -336,7 +454,7 @@ function ContactFormValidations() {
     var Message = $("#cmessage").val();
 
     var check = 0;
-    debugger;
+    //debugger;
 
 
     if (Name == '') {
@@ -349,16 +467,19 @@ function ContactFormValidations() {
         $('#cemail').after('<span class="error">This field is required</span>');
         check = 1;
         //debugger;
+    } else if (!IsEmail(Email)) {
+        $('#cemail').after('<span class="error">Please Enter a valid email</span>');
+        check = 1;
     }
 
     if (Phone == '') {
-        $('#cemail').after('<span class="error">This field is required</span>');
+        $('#cphone').after('<span class="error">This field is required</span>');
         check = 1;
         //debugger;
     }
 
     if (Message == '') {
-        $('#cemail').after('<span class="error">This field is required</span>');
+        $('#cmessage').after('<span class="error">This field is required</span>');
         check = 1;
         //debugger;
     }
@@ -377,17 +498,17 @@ function ContactFormValidations() {
         return true;
     }
 }
+//Contact End
 
 
 
-//blog
 function onClickDelete(e, t) {
     var x = confirm("Are you sure ?");
     if (x) {
-        debugger;
+        //debugger;
         var ob = { blogId: $(t).data("emid") };
         console.log(ob);
-        debugger;
+        //debugger;
         $.ajax({
             type: 'GET',
             url: '/Admin/DeleteBlog',
@@ -456,10 +577,10 @@ function onClickDeleteEvent(e, t)
 function onClickDeletePhoto(e, t) {
     var x = confirm("Are you sure ?");
     if (x) {
-        debugger;
+        //debugger;
         var ob = { pid: $(t).data("emid") };
         console.log(ob);
-        debugger;
+        //debugger;
         $.ajax({
             type: 'GET',
             url: '/Admin/DeletePhotos',
@@ -488,6 +609,174 @@ function onClickDeletePhoto(e, t) {
 
 
 
+function onClickContactDelete(e, t) {
+    var x = confirm("Are you sure ?");
+    if (x) {
+        //debugger;
+        var ob = { ctid: $(t).data("emid") };
+        console.log(ob);
+        //debugger;
+        $.ajax({
+            type: 'GET',
+            url: '/Admin/DeleteContact',
+            data: ob,
+            success: function (data) {
+                if (data == "ok") {
+                    swal("Deleted Successfully !");
+                    setTimeout(function () {
+                        location.reload(true);
+                    }, 1500);
+                } else {
+                    swal("Sorry ! Unable to delete.")
+                }
+            },
+            error: function (error) {
+                swal("Some Errorrrrrr Occurred");
+            }
+        })
+        return true;
+    }
+    else {
+        swal("Make sure to be deleted !");
+        return false;
+    }
+
+}
+
+function onClickNewsletterDelete(e,t) {
+    var x = confirm("Are you sure ?");
+    if (x) {
+        //debugger;
+        var ob = { nid: $(t).data("emid") };
+        console.log(ob);
+        debugger;
+        $.ajax({
+            type: 'GET',
+            url: '/Admin/DeleteNewsletter',
+            data: ob,
+            success: function (data) {
+                if (data == "ok") {
+                    swal("Deleted Successfully !");
+                    setTimeout(function () {
+                        location.reload(true);
+                    }, 1500);
+                } else {
+                    swal("Sorry ! Unable to delete.")
+                }
+            },
+            error: function (error) {
+                swal("Some Errorrrrrr Occurred");
+            }
+        })
+        return true;
+    }
+    else {
+        swal("Make sure to be deleted !");
+        return false;
+    }
+
+}
+
+//Newsletter
+function OnSubmitNewsletterForm(e, t)
+{
+    console.log("called");
+    console.log("called");
+    $(".error").remove();
+    if (!NewsletterValidations()) {
+        //debugger;
+        console.log("Not Submitted");
+        return false;
+    }
+    else {
+       // debugger;
+        var obj = {
+            newsEmail: $('#newsEmail').val()
+        }
+        $.ajax({
+            type: 'post',
+            url: 'Home/SubmitNewsLetter',
+            data: obj,
+            success: function (data) {
+                if (data == "ok") {
+                    swal("Submitted Successfully !");
+                    setTimeout(function () {
+                        location.reload(true);
+                    }, 1500);
+                } else {
+                    swal("Sorry ! Unable to delete.")
+                }
+            },
+            error: function (error) {
+                swal("Some Errorrrrrr Occurred");
+            }
+        })
+        debugger;
+        return true;
+         
+    }
+   
+        /* alert("Form Submitted");*/
+    
+}
+
+function NewsletterValidations() {
+    //debugger;
+    //debugger;
+    var Email = $("#newsEmail").val();
+    
+    var check = 0;
+    //debugger;
+    console.log(Email);
+
+    if (Email == '') {
+        $('#newsEmail').after('<span class="error">This field is required</span>');
+        check = 1;
+        //debugger;
+    } else if (!IsEmail) {
+        $('#newsEmail').after('<span class="error">This field is required</span>');
+        check = 1;
+    }
+
+    //if 1 not submit the form, if 0 form will submit
+    if (check == 1) {
+        //debugger;
+        console.log("I am Checked, False 1");
+        return false;
+    }
+    else {
+        //debugger;
+        console.log("I am Checked, True 0");
+        return true;
+    }
+}
+
+
+
+
+//NAVBAR ACTIVE
+jQuery(function ($) {
+    var path = window.location.href; // because the 'href' property of the DOM element is the absolute path
+    $('#menu li a').each(function () {
+        if (this.href === path) {
+            
+            $(this).addClass('active');
+
+        }
+    });
+});
+
+
+jQuery(function ($) {
+    var path = window.location.href; // because the 'href' property of the DOM element is the absolute path
+    $('#index-menu li a').each(function () {
+        if (this.href === path) {
+
+            $(this).addClass('menu-active');
+
+        }
+    });
+});
 
 
 
@@ -504,6 +793,22 @@ function onClickDeletePhoto(e, t) {
 
 
 
+
+
+//Regular Expression function Starts
+
+function IsEmail(email) {
+    const regex =
+        /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    if (!regex.test(email)) {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+
+//Regular Expression for function end
 
 
 
